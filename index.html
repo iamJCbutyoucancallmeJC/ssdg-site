@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSDG – Short Story Discussion Group</title>
+  
+  <!-- Google Fonts (loaded but hidden until easter egg) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=JetBrains+Mono:wght@400;600&family=Source+Code+Pro:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&family=Fira+Code:wght@400;600&family=DM+Mono:wght@400;500&family=Roboto+Mono:wght@400;600&family=Anonymous+Pro:wght@400;700&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --dim: #666;
+      --link: #1a1a1a;
+      --border: #ccc;
+    }
+    
+    .dark {
+      --bg: #1a1a1a;
+      --text: #e0e0e0;
+      --dim: #888;
+      --link: #e0e0e0;
+      --border: #444;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: ui-monospace, 'Cascadia Code', 'SF Mono', 'Consolas', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      transition: font-family 0.2s ease;
+    }
+    
+    /* Font Classes */
+    .font-system { font-family: ui-monospace, 'Cascadia Code', 'SF Mono', 'Consolas', monospace; }
+    .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+    .font-ibm-plex { font-family: 'IBM Plex Mono', monospace; }
+    .font-source-code { font-family: 'Source Code Pro', monospace; }
+    .font-space-mono { font-family: 'Space Mono', monospace; }
+    .font-fira-code { font-family: 'Fira Code', monospace; }
+    .font-courier-prime { font-family: 'Courier Prime', 'Courier New', monospace; }
+    .font-dm-mono { font-family: 'DM Mono', monospace; }
+    .font-roboto-mono { font-family: 'Roboto Mono', monospace; }
+    .font-anonymous { font-family: 'Anonymous Pro', monospace; }
+    .font-inconsolata { font-family: 'Inconsolata', monospace; }
+    
+    /* ========== EASTER EGG: Font Switcher ========== */
+    .font-switcher {
+      display: none;
+      background: var(--text);
+      color: var(--bg);
+      padding: 15px;
+      margin: -20px -20px 25px -20px;
+      font-family: system-ui, sans-serif;
+      font-size: 12px;
+      animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .font-switcher.visible {
+      display: block;
+    }
+    
+    .font-switcher-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .font-switcher-title {
+      font-weight: bold;
+    }
+    
+    .font-switcher-close {
+      cursor: pointer;
+      opacity: 0.7;
+      padding: 5px;
+    }
+    
+    .font-switcher-close:hover {
+      opacity: 1;
+    }
+    
+    .font-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 6px;
+    }
+    
+    .font-btn {
+      font-family: system-ui, sans-serif;
+      font-size: 11px;
+      background: transparent;
+      border: 1px solid var(--bg);
+      color: var(--bg);
+      padding: 8px 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+    }
+    
+    .font-btn:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .font-btn.active {
+      background: var(--bg);
+      color: var(--text);
+    }
+    
+    .font-btn .font-name {
+      display: block;
+      font-weight: bold;
+    }
+    
+    .font-btn .font-style {
+      opacity: 0.7;
+      font-size: 10px;
+    }
+    
+    .font-switcher-hint {
+      margin-top: 10px;
+      font-size: 10px;
+      opacity: 0.6;
+    }
+    
+    /* ========== Main Content Styles ========== */
+    a {
+      color: var(--link);
+      text-decoration: underline;
+    }
+    
+    a:hover {
+      text-decoration: none;
+    }
+    
+    .dim {
+      color: var(--dim);
+    }
+    
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .site-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0 0 5px 0;
+      letter-spacing: 0.05em;
+      cursor: default;
+      user-select: none;
+    }
+    
+    .tagline {
+      color: var(--dim);
+      font-size: 12px;
+    }
+    
+    .nav {
+      margin: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      margin-right: 15px;
+    }
+    
+    .mode-toggle {
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--dim);
+    }
+    
+    .mode-toggle:hover {
+      color: var(--text);
+    }
+    
+    .section {
+      margin: 30px 0;
+    }
+    
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 5px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+    
+    .ascii-box {
+      font-size: 13px;
+      white-space: pre;
+      line-height: 1.35;
+      overflow-x: auto;
+    }
+    
+    .story-row {
+      padding: 10px 0;
+      border-bottom: 1px dotted var(--border);
+    }
+    
+    .story-row:last-child {
+      border-bottom: none;
+    }
+    
+    .story-meta {
+      font-size: 11px;
+      color: var(--dim);
+      margin-bottom: 3px;
+    }
+    
+    .stats {
+      display: flex;
+      gap: 25px;
+      margin: 15px 0;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-num {
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+    
+    .stat-label {
+      font-size: 10px;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .footer {
+      margin-top: 40px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--dim);
+      text-align: center;
+    }
+    
+    /* Toast notification for easter egg hint */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--text);
+      color: var(--bg);
+      padding: 10px 20px;
+      font-size: 12px;
+      font-family: system-ui, sans-serif;
+      border-radius: 3px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Hidden Font Switcher (Easter Egg) -->
+  <div id="fontSwitcher" class="font-switcher">
+    <div class="font-switcher-header">
+      <span class="font-switcher-title">🐰 FONT LAB</span>
+      <span class="font-switcher-close" onclick="hideFontSwitcher()">✕ close</span>
+    </div>
+    <div class="font-grid">
+      <button class="font-btn active" onclick="setFont('font-system', this)">
+        <span class="font-name">System Mono</span>
+        <span class="font-style">Default</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-ibm-plex', this)">
+        <span class="font-name">IBM Plex Mono</span>
+        <span class="font-style">Clean, neutral</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-jetbrains', this)">
+        <span class="font-name">JetBrains Mono</span>
+        <span class="font-style">Modern, readable</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-courier-prime', this)">
+        <span class="font-name">Courier Prime</span>
+        <span class="font-style">Typewriter, literary</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-space-mono', this)">
+        <span class="font-name">Space Mono</span>
+        <span class="font-style">Quirky, geometric</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-source-code', this)">
+        <span class="font-name">Source Code Pro</span>
+        <span class="font-style">Adobe, versatile</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-fira-code', this)">
+        <span class="font-name">Fira Code</span>
+        <span class="font-style">Mozilla, ligatures</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-dm-mono', this)">
+        <span class="font-name">DM Mono</span>
+        <span class="font-style">Compact, friendly</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-roboto-mono', this)">
+        <span class="font-name">Roboto Mono</span>
+        <span class="font-style">Google, familiar</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-inconsolata', this)">
+        <span class="font-name">Inconsolata</span>
+        <span class="font-style">Humanist mono</span>
+      </button>
+      <button class="font-btn" onclick="setFont('font-anonymous', this)">
+        <span class="font-name">Anonymous Pro</span>
+        <span class="font-style">Hacker aesthetic</span>
+      </button>
+    </div>
+    <div class="font-switcher-hint">
+      Tip: Type "rabbit" again or press Esc to close
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="header">
+    <div class="site-title" id="siteTitle">SSDG</div>
+    <div class="tagline">Short Story Discussion Group · est. 2022</div>
+  </div>
+  
+  <nav class="nav">
+    <div class="nav-links">
+      <a href="archive.html">Archive</a>
+      <a href="#members">Members</a>
+      <a href="#about">About</a>
+    </div>
+    <span class="mode-toggle" onclick="toggleDark()">◐ Dark</span>
+  </nav>
+  
+  <div class="section">
+    <div class="section-title">NEXT MEETING</div>
+    <div class="ascii-box">┌─────────────────────────────────────────┐
+│  Jan 22, 2026 · 12:00pm PT · Zoom       │
+│  ─────────────────────────────────────  │
+│  Picker: Hannah                         │
+│  Stories: TBD                           │
+│                                         │
+│  Rotation: JC → Hannah → Ruben → John   │
+│                  ▲                      │
+└─────────────────────────────────────────┘</div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">RECENT</div>
+    
+    <div class="story-row">
+      <div class="story-meta">Dec 17, 2025 · All Pick (Time)</div>
+      <div>"Plants, Stones, Dirt & Sky" <span class="dim">– JC</span></div>
+      <div>"Wing's Chips" <span class="dim">– Mavis Gallant (Hannah)</span></div>
+      <div>"Repent, Harlequin!" <span class="dim">– Harlan Ellison (Ruben)</span></div>
+      <div>Afterlife story <span class="dim">– John</span></div>
+    </div>
+    
+    <div class="story-row">
+      <div class="story-meta">Nov 21, 2025 · JC's pick</div>
+      <div>"The Unreasonable" <span class="dim">– Rivka Galchen</span></div>
+      <div>Bee story <span class="dim">– Rivka Galchen</span></div>
+    </div>
+    
+    <div class="story-row">
+      <div class="story-meta">Oct 22, 2025 · John's pick</div>
+      <div>"The Lesson" <span class="dim">– Kelly Link</span></div>
+      <div>+ one more <span class="dim">– Kelly Link</span></div>
+    </div>
+    
+    <div style="margin-top: 15px;">
+      <a href="archive.html">→ Full archive (90+ stories)</a>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">STATS</div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">90</div>
+        <div class="stat-label">stories</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">36</div>
+        <div class="stat-label">meetings</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">years</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2.3%</div>
+        <div class="stat-label">skinnings*</div>
+      </div>
+    </div>
+    <div class="dim" style="font-size:11px">* Human skinning incidents. Hard limit: &lt;1%.</div>
+  </div>
+  
+  <div class="section" id="members">
+    <div class="section-title">MEMBERS</div>
+    <div class="ascii-box">┌──────────────────────────────────────┐
+│  JC Cangilla    · jcangilla@gmail    │
+│  Hannah Kenah   · hhkenah@gmail      │
+│  John Yi        · john.yi@gmail      │
+│  Ruben Ruckman  · rubenruckman@gmail │
+└──────────────────────────────────────┘</div>
+  </div>
+  
+  <div class="section" id="about">
+    <div class="section-title">ABOUT</div>
+    <p>
+      Four friends meeting monthly since 2022 to discuss short stories.
+      One person picks two stories, everyone reads, we talk for 90 minutes on Zoom.
+    </p>
+    <p class="dim" style="font-size:12px; margin-top:15px;">
+      "Two stories, two different authors, hopefully two different time periods. I feel like we're reading good stuff and have good conversations. That's all I wanted out of the group."
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">CATNIPS</div>
+    <p class="dim" style="font-size:12px">
+      Older narrator coming to terms with childhood ·
+      Ambiguous endings ·
+      Devastating final paragraphs ·
+      Stories that reward re-reading ·
+      Short enough to read twice
+    </p>
+    <p class="dim" style="font-size:12px; margin-top:10px;">
+      "Another catnip is an open-ended story. The clean-cut ones we don't talk about as much."
+    </p>
+  </div>
+  
+  <div class="footer">
+    SSDG · JC · Hannah · John · Ruben
+    <br>
+    <span class="dim">"rabbit rabbit rabbit"</span>
+  </div>
+
+  <!-- Toast for easter egg discovery -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    // ========== Easter Egg: Type "rabbit" to reveal font switcher ==========
+    let typedKeys = '';
+    const secretWord = 'rabbit';
+    
+    document.addEventListener('keydown', function(e) {
+      // Close on Escape
+      if (e.key === 'Escape') {
+        hideFontSwitcher();
+        return;
+      }
+      
+      // Track typed characters
+      typedKeys += e.key.toLowerCase();
+      
+      // Keep only last N characters (length of secret word)
+      if (typedKeys.length > secretWord.length) {
+        typedKeys = typedKeys.slice(-secretWord.length);
+      }
+      
+      // Check for match
+      if (typedKeys === secretWord) {
+        toggleFontSwitcher();
+        typedKeys = '';
+      }
+    });
+    
+    // ========== Alternative: Click site title 3 times ==========
+    let clickCount = 0;
+    let clickTimer = null;
+    
+    document.getElementById('siteTitle').addEventListener('click', function() {
+      clickCount++;
+      
+      if (clickTimer) clearTimeout(clickTimer);
+      
+      if (clickCount === 3) {
+        toggleFontSwitcher();
+        clickCount = 0;
+      } else {
+        // Reset after 1 second of no clicks
+        clickTimer = setTimeout(() => {
+          clickCount = 0;
+        }, 1000);
+      }
+    });
+    
+    // ========== Font Switcher Functions ==========
+    function toggleFontSwitcher() {
+      const switcher = document.getElementById('fontSwitcher');
+      if (switcher.classList.contains('visible')) {
+        hideFontSwitcher();
+      } else {
+        showFontSwitcher();
+      }
+    }
+    
+    function showFontSwitcher() {
+      document.getElementById('fontSwitcher').classList.add('visible');
+      showToast('🐰 Font Lab activated!');
+    }
+    
+    function hideFontSwitcher() {
+      document.getElementById('fontSwitcher').classList.remove('visible');
+    }
+    
+    function setFont(fontClass, btn) {
+      // Remove all font classes
+      document.body.className = document.body.className
+        .split(' ')
+        .filter(c => !c.startsWith('font-'))
+        .join(' ');
+      
+      // Add new font class
+      document.body.classList.add(fontClass);
+      
+      // Update button states
+      document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Save preference
+      localStorage.setItem('ssdg-font', fontClass);
+    }
+    
+    // ========== Dark Mode ==========
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('ssdg-dark', document.body.classList.contains('dark'));
+    }
+    
+    // ========== Toast Notification ==========
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('visible');
+      
+      setTimeout(() => {
+        toast.classList.remove('visible');
+      }, 2000);
+    }
+    
+    // ========== Load Saved Preferences ==========
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load saved font
+      const savedFont = localStorage.getItem('ssdg-font');
+      if (savedFont) {
+        document.body.classList.add(savedFont);
+        // Update button state
+        document.querySelectorAll('.font-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.onclick.toString().includes(savedFont)) {
+            btn.classList.add('active');
+          }
+        });
+      }
+      
+      // Load saved dark mode
+      const savedDark = localStorage.getItem('ssdg-dark');
+      if (savedDark === 'true') {
+        document.body.classList.add('dark');
+      }
+    });
+  </script>
+</body>
+</html>

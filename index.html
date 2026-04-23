@@ -184,10 +184,26 @@
 
     /* ===== Next Meeting ===== */
     .next-meeting {
+      display: inline-block;
+      border: 1px solid var(--text);
       font-size: 13px;
-      white-space: pre;
-      line-height: 1.35;
-      overflow-x: auto;
+      line-height: 1.6;
+      padding: 10px 16px;
+    }
+    .next-meeting .nm-divider {
+      border-top: 1px solid var(--text);
+      margin: 4px 0;
+    }
+    .next-meeting .nm-rotation {
+      margin-top: 8px;
+      white-space: nowrap;
+    }
+    .next-meeting .nm-pointer {
+      display: flex;
+      gap: 0;
+    }
+    .nm-pointer span {
+      display: inline-block;
     }
 
     /* ===== Search / Filter ===== */
@@ -399,19 +415,18 @@
        ================================================================ -->
   <div class="section">
     <div class="section-title">NEXT MEETING</div>
-    <div class="next-meeting">&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
-&#9474;  May 1, 2026 &middot; 12:00pm PT &middot; Google Meet        &#9474;
-&#9474;  &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;  &#9474;
-&#9474;  Picker: JC                                        &#9474;
-&#9474;  Stories:                                           &#9474;
-&#9474;    "Willing"                                        &#9474;
-&#9474;       &#8211; Lorrie Moore (Birds of America, 1998)        &#9474;
-&#9474;    "100 Years of Forgiveness"                       &#9474;
-&#9474;       &#8211; Clarice Lispector                           &#9474;
-&#9474;                                                     &#9474;
-&#9474;  Rotation: JC &#8594; Hannah &#8594; Ruben &#8594; John              &#9474;
-&#9474;             &#9650;                                        &#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</div>
+    <div class="next-meeting">
+      <div>May 1, 2026 &middot; 12:00pm PT &middot; Google Meet</div>
+      <div class="nm-divider"></div>
+      <div>Picker: JC</div>
+      <div>Stories:</div>
+      <div>&nbsp;&nbsp;"Willing"</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&ndash; Lorrie Moore (Birds of America, 1998)</div>
+      <div>&nbsp;&nbsp;"100 Years of Forgiveness"</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&ndash; Clarice Lispector</div>
+      <div class="nm-rotation">Rotation: JC &rarr; Hannah &rarr; Ruben &rarr; John</div>
+      <div class="nm-pointer"><span style="visibility:hidden">Rotation: </span><span>&#9650;</span></div>
+    </div>
   </div>
 
   <!-- ================================================================

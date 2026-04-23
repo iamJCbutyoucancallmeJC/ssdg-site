@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SSDG – Short Story Discussion Group</title>
-  <meta name="description" content="Four friends reading two short stories each month since 2022. 96 stories, 40 meetings, still going.">
+  <meta name="description" content="Four friends reading two short stories each month since 2022. 99 stories, 41 meetings, still going.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="SSDG – Short Story Discussion Group">
@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=JetBrains+Mono:wght@400;600&family=Source+Code+Pro:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&family=Fira+Code:wght@400;600&family=DM+Mono:wght@400;500&family=Roboto+Mono:wght@400;600&family=Anonymous+Pro:wght@400;700&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
-  
+
   <style>
     :root {
       --bg: #fafafa;
@@ -36,34 +36,33 @@
       --dim: #666;
       --link: #1a1a1a;
       --border: #ccc;
+      --highlight: #fff3cd;
     }
-    
+
     .dark {
       --bg: #1a1a1a;
       --text: #e0e0e0;
       --dim: #888;
       --link: #e0e0e0;
       --border: #444;
+      --highlight: #3d3d00;
     }
-    
-    * {
-      box-sizing: border-box;
-    }
-    
+
+    * { box-sizing: border-box; }
+
     body {
       font-family: 'Courier Prime', 'Courier New', Courier, monospace;
       font-size: 14px;
       line-height: 1.6;
       background: var(--bg);
       color: var(--text);
-      max-width: 700px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 20px;
       transition: font-family 0.2s ease;
     }
-    
-    /* Font Classes */
-    .font-system { font-family: 'Courier Prime', 'Courier New', Courier, monospace; }
+
+    /* Font classes */
     .font-jetbrains { font-family: 'JetBrains Mono', monospace; }
     .font-ibm-plex { font-family: 'IBM Plex Mono', monospace; }
     .font-source-code { font-family: 'Source Code Pro', monospace; }
@@ -74,8 +73,12 @@
     .font-roboto-mono { font-family: 'Roboto Mono', monospace; }
     .font-anonymous { font-family: 'Anonymous Pro', monospace; }
     .font-inconsolata { font-family: 'Inconsolata', monospace; }
-    
-    /* ========== EASTER EGG: Font Switcher ========== */
+
+    a { color: var(--link); text-decoration: underline; }
+    a:hover { text-decoration: none; }
+    .dim { color: var(--dim); }
+
+    /* ===== Easter Egg: Font Switcher ===== */
     .font-switcher {
       display: none;
       background: var(--text);
@@ -86,43 +89,36 @@
       font-size: 12px;
       animation: slideDown 0.3s ease;
     }
-    
+
     @keyframes slideDown {
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
-    .font-switcher.visible {
-      display: block;
-    }
-    
+
+    .font-switcher.visible { display: block; }
+
     .font-switcher-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
     }
-    
-    .font-switcher-title {
-      font-weight: bold;
-    }
-    
+
+    .font-switcher-title { font-weight: bold; }
+
     .font-switcher-close {
       cursor: pointer;
       opacity: 0.7;
       padding: 5px;
     }
-    
-    .font-switcher-close:hover {
-      opacity: 1;
-    }
-    
+    .font-switcher-close:hover { opacity: 1; }
+
     .font-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
       gap: 6px;
     }
-    
+
     .font-btn {
       font-family: system-ui, sans-serif;
       font-size: 11px;
@@ -134,52 +130,20 @@
       text-align: left;
       transition: all 0.15s ease;
     }
-    
-    .font-btn:hover {
-      background: rgba(255,255,255,0.1);
-    }
-    
-    .font-btn.active {
-      background: var(--bg);
-      color: var(--text);
-    }
-    
-    .font-btn .font-name {
-      display: block;
-      font-weight: bold;
-    }
-    
-    .font-btn .font-style {
-      opacity: 0.7;
-      font-size: 10px;
-    }
-    
-    .font-switcher-hint {
-      margin-top: 10px;
-      font-size: 10px;
-      opacity: 0.6;
-    }
-    
-    /* ========== Main Content Styles ========== */
-    a {
-      color: var(--link);
-      text-decoration: underline;
-    }
-    
-    a:hover {
-      text-decoration: none;
-    }
-    
-    .dim {
-      color: var(--dim);
-    }
-    
+    .font-btn:hover { background: rgba(255,255,255,0.1); }
+    .font-btn.active { background: var(--bg); color: var(--text); }
+    .font-btn .font-name { display: block; font-weight: bold; }
+    .font-btn .font-style { opacity: 0.7; font-size: 10px; }
+
+    .font-switcher-hint { margin-top: 10px; font-size: 10px; opacity: 0.6; }
+
+    /* ===== Layout ===== */
     .header {
       border-bottom: 1px solid var(--border);
       padding-bottom: 15px;
       margin-bottom: 20px;
     }
-    
+
     .site-title {
       font-size: 18px;
       font-weight: bold;
@@ -188,37 +152,27 @@
       cursor: default;
       user-select: none;
     }
-    
-    .tagline {
-      color: var(--dim);
-      font-size: 12px;
-    }
-    
+
+    .tagline { color: var(--dim); font-size: 12px; }
+
     .nav {
       margin: 15px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    
-    .nav-links a {
-      margin-right: 15px;
-    }
-    
+
+    .nav-links a { margin-right: 15px; }
+
     .mode-toggle {
       font-size: 12px;
       cursor: pointer;
       color: var(--dim);
     }
-    
-    .mode-toggle:hover {
-      color: var(--text);
-    }
-    
-    .section {
-      margin: 30px 0;
-    }
-    
+    .mode-toggle:hover { color: var(--text); }
+
+    .section { margin: 30px 0; }
+
     .section-title {
       font-weight: bold;
       margin-bottom: 10px;
@@ -227,52 +181,114 @@
       font-size: 12px;
       letter-spacing: 0.1em;
     }
-    
-    .ascii-box {
+
+    /* ===== Next Meeting ===== */
+    .next-meeting {
       font-size: 13px;
       white-space: pre;
       line-height: 1.35;
       overflow-x: auto;
     }
-    
-    .story-row {
-      padding: 10px 0;
-      border-bottom: 1px dotted var(--border);
+
+    /* ===== Search / Filter ===== */
+    .search-box { margin-bottom: 20px; }
+
+    .search-input {
+      font-family: inherit;
+      font-size: 14px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      width: 100%;
+      max-width: 400px;
     }
-    
-    .story-row:last-child {
-      border-bottom: none;
-    }
-    
-    .story-meta {
+    .search-input::placeholder { color: var(--dim); }
+
+    .filter-row { margin-top: 10px; font-size: 12px; }
+
+    .filter-btn {
+      font-family: inherit;
       font-size: 11px;
-      color: var(--dim);
-      margin-bottom: 3px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 8px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      cursor: pointer;
     }
-    
-    .stats {
-      display: flex;
-      gap: 25px;
-      margin: 15px 0;
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--text);
+      color: var(--bg);
     }
-    
-    .stat {
-      text-align: center;
+
+    /* ===== Story Table ===== */
+    .story-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
     }
-    
-    .stat-num {
-      font-size: 28px;
-      font-weight: bold;
-      line-height: 1.2;
-    }
-    
-    .stat-label {
-      font-size: 10px;
-      color: var(--dim);
+
+    .story-table th {
+      text-align: left;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      color: var(--dim);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 10px 8px 0;
     }
-    
+
+    .story-table td {
+      padding: 10px 10px 10px 0;
+      border-bottom: 1px dotted var(--border);
+      vertical-align: top;
+    }
+
+    .story-table tr:hover td { background: var(--highlight); }
+    .story-table tr.hidden { display: none; }
+
+    .story-notes {
+      font-size: 11px;
+      color: var(--dim);
+      margin-top: 3px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 10px;
+      background: var(--border);
+      color: var(--text);
+      padding: 2px 5px;
+      margin-right: 3px;
+      margin-top: 3px;
+      cursor: pointer;
+    }
+    .tag:hover { background: var(--text); color: var(--bg); }
+    .dark .tag { background: #333; }
+
+    /* ===== All Play boxes ===== */
+    .allpick-box {
+      border: 1px solid var(--border);
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .allpick-header { font-weight: bold; margin-bottom: 8px; }
+    .allpick-theme { color: var(--dim); font-size: 12px; margin-bottom: 10px; }
+    .allpick-picks { font-size: 13px; }
+    .allpick-picks div { margin-bottom: 5px; }
+
+    /* ===== Stats ===== */
+    .stats-row {
+      display: flex;
+      gap: 30px;
+      margin: 15px 0;
+      font-size: 12px;
+    }
+    .stat-item span { font-weight: bold; font-size: 16px; }
+
+    /* ===== Footer ===== */
     .footer {
       margin-top: 40px;
       padding-top: 15px;
@@ -281,8 +297,8 @@
       color: var(--dim);
       text-align: center;
     }
-    
-    /* Toast notification for easter egg hint */
+
+    /* ===== Toast ===== */
     .toast {
       position: fixed;
       bottom: 20px;
@@ -298,24 +314,30 @@
       transition: opacity 0.3s ease;
       pointer-events: none;
     }
-    
-    .toast.visible {
-      opacity: 1;
+    .toast.visible { opacity: 1; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .story-table { font-size: 12px; }
+      .story-table th:nth-child(3),
+      .story-table td:nth-child(3),
+      .story-table th:nth-child(4),
+      .story-table td:nth-child(4) { display: none; }
     }
   </style>
 </head>
 <body>
-  
-  <!-- Hidden Font Switcher (Easter Egg) -->
+
+  <!-- Easter Egg: Font Switcher -->
   <div id="fontSwitcher" class="font-switcher">
     <div class="font-switcher-header">
-      <span class="font-switcher-title">🐰 FONT LAB</span>
-      <span class="font-switcher-close" onclick="hideFontSwitcher()">✕ close</span>
+      <span class="font-switcher-title">FONT LAB</span>
+      <span class="font-switcher-close" onclick="hideFontSwitcher()">x close</span>
     </div>
     <div class="font-grid">
-      <button class="font-btn active" onclick="setFont('font-system', this)">
-        <span class="font-name">System Mono</span>
-        <span class="font-style">Default</span>
+      <button class="font-btn active" onclick="setFont('font-courier-prime', this)">
+        <span class="font-name">Courier Prime</span>
+        <span class="font-style">Typewriter, literary</span>
       </button>
       <button class="font-btn" onclick="setFont('font-ibm-plex', this)">
         <span class="font-name">IBM Plex Mono</span>
@@ -324,10 +346,6 @@
       <button class="font-btn" onclick="setFont('font-jetbrains', this)">
         <span class="font-name">JetBrains Mono</span>
         <span class="font-style">Modern, readable</span>
-      </button>
-      <button class="font-btn" onclick="setFont('font-courier-prime', this)">
-        <span class="font-name">Courier Prime</span>
-        <span class="font-style">Typewriter, literary</span>
       </button>
       <button class="font-btn" onclick="setFont('font-space-mono', this)">
         <span class="font-name">Space Mono</span>
@@ -345,10 +363,6 @@
         <span class="font-name">DM Mono</span>
         <span class="font-style">Compact, friendly</span>
       </button>
-      <button class="font-btn" onclick="setFont('font-roboto-mono', this)">
-        <span class="font-name">Roboto Mono</span>
-        <span class="font-style">Google, familiar</span>
-      </button>
       <button class="font-btn" onclick="setFont('font-inconsolata', this)">
         <span class="font-name">Inconsolata</span>
         <span class="font-style">Humanist mono</span>
@@ -358,263 +372,367 @@
         <span class="font-style">Hacker aesthetic</span>
       </button>
     </div>
-    <div class="font-switcher-hint">
-      Tip: Type "rabbit" again or press Esc to close
-    </div>
+    <div class="font-switcher-hint">Type "rabbit" or press Esc to close</div>
   </div>
 
-  <!-- Main Content -->
   <div class="header">
     <div class="site-title" id="siteTitle">SSDG</div>
-    <div class="tagline">Short Story Discussion Group · est. 2022</div>
+    <div class="tagline">Short Story Discussion Group &middot; est. 2022</div>
   </div>
-  
+
   <nav class="nav">
     <div class="nav-links">
-      <a href="archive.html">Archive</a>
+      <a href="#stories">Archive</a>
+      <a href="#allplays">All Plays</a>
       <a href="#about">About</a>
     </div>
-    <span class="mode-toggle" onclick="toggleDark()">◐ Dark</span>
+    <span class="mode-toggle" onclick="toggleDark()">&#9680; Dark</span>
   </nav>
-  
+
+  <!-- ================================================================
+       NEXT MEETING
+       Update this block after each session.
+       - Change the date, picker, and stories
+       - The rotation arrow (▲) should point to whoever is picking next:
+           Position 1 = JC, Position 2 = Hannah, Position 3 = Ruben, Position 4 = John
+       - Last session: Mar 25, 2026 (John). Next in rotation: JC, then Hannah.
+       ================================================================ -->
   <div class="section">
     <div class="section-title">NEXT MEETING</div>
-    <div class="ascii-box">┌───────────────────────────────────────────────┐
-│  Feb 20, 2026 · 12:00pm PT · Google Meet      │
-│  ───────────────────────────────────────────  │
-│  Picker: John                                │
-│  Stories:                                     │
-│    "The Aforementioned Journal"               │
-│       – David Hollander (2026)                │
-│    "A Very Old Man with Enormous Wings"       │
-│       – Gabriel García Márquez (1971)         │
-│                                               │
-│  Theme: Magical realism                       │
-│                                               │
-│  Rotation: JC → Hannah → Ruben → John         │
-│                           ▲                   │
-└───────────────────────────────────────────────┘</div>
+    <div class="next-meeting">&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474;  May 1, 2026 &middot; 12:00pm PT &middot; Google Meet        &#9474;
+&#9474;  &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;  &#9474;
+&#9474;  Picker: JC                                        &#9474;
+&#9474;  Stories:                                           &#9474;
+&#9474;    "Willing"                                        &#9474;
+&#9474;       &#8211; Lorrie Moore (Birds of America, 1998)        &#9474;
+&#9474;    "100 Years of Forgiveness"                       &#9474;
+&#9474;       &#8211; Clarice Lispector                           &#9474;
+&#9474;                                                     &#9474;
+&#9474;  Rotation: JC &#8594; Hannah &#8594; Ruben &#8594; John              &#9474;
+&#9474;             &#9650;                                        &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</div>
   </div>
-  
-  <div class="section">
-    <div class="section-title">RECENT</div>
-    
 
+  <!-- ================================================================
+       ARCHIVE
+       Add new sessions to the TOP of the tbody (most recent first).
+       Format: <tr data-picker="Name" data-tags="#tag1 #tag2">
+       ================================================================ -->
+  <div class="section" id="stories">
+    <div class="section-title">ALL STORIES BY SESSION</div>
 
-
-
-
-
-
-
-
-
-
-
-
-    <div class="story-row">
-      <div class="story-meta">Dec 17, 2025 · All Play</div>
-      <div>"Plants, Stones, Dirt, and Sky" <span class="dim">– Yan Lianke (JC)</span></div>
-      <div>"Wing's Chips" <span class="dim">– Mavis Gallant (Hannah)</span></div>
-      <div>"Repent, Harlequin! Said the Ticktockman" <span class="dim">– Harlan Ellison (Ruben)</span></div>
-      <div>"My Dear You" <span class="dim">– Rachel Khong (John)</span></div>
+    <div class="stats-row">
+      <div class="stat-item"><span>99</span> stories</div>
+      <div class="stat-item"><span>65+</span> authors</div>
+      <div class="stat-item"><span>41</span> sessions</div>
+      <div class="stat-item"><span>6</span> all plays</div>
     </div>
 
-    <div class="story-row">
-      <div class="story-meta">Nov 21, 2025 · JC's pick</div>
-      <div>"Unreasonable" <span class="dim">– Rivka Galchen</span></div>
-      <div>"Hunter's Moon" <span class="dim">– Thomas Lynch</span></div>
-    </div>
-
-    <div class="story-row">
-      <div class="story-meta">Oct 22, 2025 · John's pick</div>
-      <div>"Signs and Symbols" <span class="dim">– Vladimir Nabokov</span></div>
-      <div>"Origin Story" <span class="dim">– Kelly Link</span></div>
-      <div>"The Lesson" <span class="dim">– Kelly Link</span></div>
-    </div>
-
-    <div style="margin-top: 15px;">
-      <a href="archive.html">→ Full archive (96 stories)</a>
-    </div>
-  </div>
-  
-  <div class="section">
-    <div class="section-title">STATS</div>
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-num">96</div>
-        <div class="stat-label">stories</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">40</div>
-        <div class="stat-label">meetings</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">3</div>
-        <div class="stat-label">years</div>
+    <div class="search-box">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search stories, authors, tags..." onkeyup="filterStories()">
+      <div class="filter-row">
+        <span class="dim">Filter by picker: </span>
+        <button class="filter-btn active" onclick="filterByPicker('all', this)">All</button>
+        <button class="filter-btn" onclick="filterByPicker('JC', this)">JC</button>
+        <button class="filter-btn" onclick="filterByPicker('Hannah', this)">Hannah</button>
+        <button class="filter-btn" onclick="filterByPicker('John', this)">John</button>
+        <button class="filter-btn" onclick="filterByPicker('Ruben', this)">Ruben</button>
       </div>
     </div>
+
+    <table class="story-table" id="storyTable">
+      <thead>
+        <tr>
+          <th>Story</th>
+          <th>Author</th>
+          <th>Picker</th>
+          <th>Session</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 2026 -->
+        <tr data-picker="John" data-tags="#technology #consciousness #modernism #memory"><td><div class="story-title">"Dacey's Patent Automatic Nanny"</div><div class="story-notes">First Hogarth Press release (Woolf's imprint). Channel Four: childhood memory, scrambled cable TV, brass reflections, Pittsburgh resonance. Technology + consciousness thread through all three. John engaged. Ohio shows up in 2 of 3 stories. JC called in from Tokyo at 4:47am.</div><span class="tag">#technology</span><span class="tag">#consciousness</span><span class="tag">#modernism</span><span class="tag">#memory</span></td><td>Ted Chiang (Exhalation)</td><td>John</td><td>Mar 25, 2026</td></tr>
+        <tr data-picker="John" data-tags="#technology #consciousness #modernism #memory"><td><div class="story-title">"The Mark on the Wall"</div><div class="story-notes">First Hogarth Press release (Woolf's imprint). Channel Four: childhood memory, scrambled cable TV, brass reflections, Pittsburgh resonance. Technology + consciousness thread through all three. John engaged. Ohio shows up in 2 of 3 stories. JC called in from Tokyo at 4:47am.</div><span class="tag">#technology</span><span class="tag">#consciousness</span><span class="tag">#modernism</span><span class="tag">#memory</span></td><td>Virginia Woolf (Two Stories)</td><td>John</td><td>Mar 25, 2026</td></tr>
+        <tr data-picker="John" data-tags="#technology #consciousness #modernism #memory"><td><div class="story-title">"Channel Four"</div><div class="story-notes">First Hogarth Press release (Woolf's imprint). Channel Four: childhood memory, scrambled cable TV, brass reflections, Pittsburgh resonance. Technology + consciousness thread through all three. John engaged. Ohio shows up in 2 of 3 stories. JC called in from Tokyo at 4:47am.</div><span class="tag">#technology</span><span class="tag">#consciousness</span><span class="tag">#modernism</span><span class="tag">#memory</span></td><td>Michael Sears (Zoetrope: All-Story)</td><td>John</td><td>Mar 25, 2026</td></tr>
+        <tr data-picker="Ruben" data-tags="#literary #surreal #wings"><td><div class="story-title">"The Aforementioned Journal"</div><div class="story-notes">Wings in both stories (subconscious connection). Hollander: overwrought but genuine, "macaroni on macaroni." Márquez: "The world had been sad since Tuesday." Translation discussion.</div><span class="tag">#literary</span><span class="tag">#surreal</span><span class="tag">#wings</span></td><td>David Hollander (LA Quarterly)</td><td>Ruben</td><td>Feb 20, 2026</td></tr>
+        <tr data-picker="Ruben" data-tags="#literary #surreal #wings"><td><div class="story-title"><a href="https://www.ndsu.edu/pubweb/~cin101/readings/marquez_wings.htm" target="_blank" rel="noopener">"A Very Old Man with Enormous Wings"</a></div><div class="story-notes">Wings in both stories (subconscious connection). Hollander: overwrought but genuine, "macaroni on macaroni." Márquez: "The world had been sad since Tuesday." Translation discussion.</div><span class="tag">#literary</span><span class="tag">#surreal</span><span class="tag">#wings</span></td><td>Gabriel García Márquez</td><td>Ruben</td><td>Feb 20, 2026</td></tr>
+        <tr data-picker="Hannah" data-tags="#surreal #haunting #relationships"><td><div class="story-title">"A Poor-Aunt Story"</div><div class="story-notes">Ghosts/haunting in both. John's reflection on loneliness gap. Farm stand zombie.</div><span class="tag">#surreal</span><span class="tag">#haunting</span><span class="tag">#relationships</span></td><td>Haruki Murakami</td><td>Hannah</td><td>Jan 28, 2026</td></tr>
+        <tr data-picker="Hannah" data-tags="#surreal #haunting #relationships"><td><div class="story-title">"Can Only Houses Be Haunted"</div><div class="story-notes">Ghosts/haunting in both. John's reflection on loneliness gap. Farm stand zombie.</div><span class="tag">#surreal</span><span class="tag">#haunting</span><span class="tag">#relationships</span></td><td>Marie-Hélène Bertino (Exit Zero)</td><td>Hannah</td><td>Jan 28, 2026</td></tr>
+        <!-- 2025 -->
+        <tr data-picker="JC" data-tags="#all-play #time #conformity #death"><td><div class="story-title">"Plants, Stones, Dirt, and Sky"</div><div class="story-notes">All Play. Theme: Time.</div><span class="tag">#all-play</span><span class="tag">#time</span><span class="tag">#conformity</span><span class="tag">#death</span></td><td>Yan Lianke</td><td>JC</td><td>Dec 17, 2025</td></tr>
+        <tr data-picker="Hannah" data-tags="#all-play #time #conformity #death"><td><div class="story-title">"Wing's Chips"</div><div class="story-notes">All Play. Theme: Time. "If you could just hold on to one thing. If just one thing could be enough." — Hannah</div><span class="tag">#all-play</span><span class="tag">#time</span><span class="tag">#conformity</span><span class="tag">#death</span></td><td>Mavis Gallant</td><td>Hannah</td><td>Dec 17, 2025</td></tr>
+        <tr data-picker="Ruben" data-tags="#all-play #time #conformity #death"><td><div class="story-title">"Repent, Harlequin! Said the Ticktockman"</div><div class="story-notes">All Play. Theme: Time.</div><span class="tag">#all-play</span><span class="tag">#time</span><span class="tag">#conformity</span><span class="tag">#death</span></td><td>Harlan Ellison</td><td>Ruben</td><td>Dec 17, 2025</td></tr>
+        <tr data-picker="John" data-tags="#all-play #time #conformity #death"><td><div class="story-title">"My Dear You"</div><div class="story-notes">All Play. Theme: Time.</div><span class="tag">#all-play</span><span class="tag">#time</span><span class="tag">#conformity</span><span class="tag">#death</span></td><td>Rachel Khong</td><td>John</td><td>Dec 17, 2025</td></tr>
+        <tr data-picker="JC" data-tags="#devastating-ending #death"><td><div class="story-title">"Unreasonable"</div><span class="tag">#devastating-ending</span><span class="tag">#death</span></td><td>Rivka Galchen</td><td>JC</td><td>Nov 21, 2025</td></tr>
+        <tr data-picker="JC" data-tags="#devastating-ending #death"><td><div class="story-title">"Hunter's Moon"</div><span class="tag">#devastating-ending</span><span class="tag">#death</span></td><td>Thomas Lynch</td><td>JC</td><td>Nov 21, 2025</td></tr>
+        <tr data-picker="John" data-tags="#devastating-ending #surreal"><td><div class="story-title">"Signs and Symbols"</div><div class="story-notes">John's birthday. Accidental attachment became bonus read.</div><span class="tag">#devastating-ending</span><span class="tag">#surreal</span></td><td>Vladimir Nabokov</td><td>John</td><td>Oct 22, 2025</td></tr>
+        <tr data-picker="John" data-tags="#devastating-ending #surreal"><td><div class="story-title">"Origin Story"</div><div class="story-notes">John's birthday. Accidental attachment became bonus read.</div><span class="tag">#devastating-ending</span><span class="tag">#surreal</span></td><td>Kelly Link</td><td>John</td><td>Oct 22, 2025</td></tr>
+        <tr data-picker="John" data-tags="#devastating-ending #surreal"><td><div class="story-title">"The Lesson"</div><div class="story-notes">John's birthday. Accidental attachment became bonus read.</div><span class="tag">#devastating-ending</span><span class="tag">#surreal</span></td><td>Kelly Link</td><td>John</td><td>Oct 22, 2025</td></tr>
+        <tr data-picker="Ruben" data-tags="#literary #aging"><td><div class="story-title">"Artist"</div><div class="story-notes">Second Carver (first was "Cathedral" Jan 2023).</div><span class="tag">#literary</span><span class="tag">#aging</span></td><td>Lydia Millet</td><td>Ruben</td><td>Sep 24, 2025</td></tr>
+        <tr data-picker="Ruben" data-tags="#literary #aging"><td><div class="story-title">"After the Denim"</div><div class="story-notes">Second Carver (first was "Cathedral" Jan 2023).</div><span class="tag">#literary</span><span class="tag">#aging</span></td><td>Raymond Carver</td><td>Ruben</td><td>Sep 24, 2025</td></tr>
+        <tr data-picker="Hannah" data-tags="#all-play #coming-of-age"><td><div class="story-title"><a href="https://americanliterature.com/author/sherwood-anderson/book/winesburg-ohio/sophistication" target="_blank" rel="noopener">"Sophistication"</a></div><div class="story-notes">All Play. Theme: Weather/Whether. Ruben's birthday.</div><span class="tag">#all-play</span><span class="tag">#coming-of-age</span></td><td>Sherwood Anderson</td><td>Hannah</td><td>Aug 27, 2025</td></tr>
+        <tr data-picker="Ruben" data-tags="#all-play #coming-of-age"><td><div class="story-title">"Point of View"</div><div class="story-notes">All Play. Theme: Weather/Whether. Ruben's birthday.</div><span class="tag">#all-play</span><span class="tag">#coming-of-age</span></td><td>Lucia Berlin</td><td>Ruben</td><td>Aug 27, 2025</td></tr>
+        <tr data-picker="JC" data-tags="#all-play #coming-of-age"><td><div class="story-title">"The Fête"</div><div class="story-notes">All Play. Theme: Weather/Whether. Ruben's birthday.</div><span class="tag">#all-play</span><span class="tag">#coming-of-age</span></td><td>Tom Crewe</td><td>JC</td><td>Aug 27, 2025</td></tr>
+        <tr data-picker="John" data-tags="#all-play #coming-of-age"><td><div class="story-title">"The Man Stopped"</div><div class="story-notes">All Play. Theme: Weather/Whether. Ruben's birthday.</div><span class="tag">#all-play</span><span class="tag">#coming-of-age</span></td><td>Vladimir Nabokov</td><td>John</td><td>Aug 27, 2025</td></tr>
+        <tr data-picker="JC" data-tags="#literary #class"><td><div class="story-title">"Walter, Like Water"</div><div class="story-notes">NY vs LA. Homes is a contemporary LA riff on Cheever. Cheever's birthday week.</div><span class="tag">#literary</span><span class="tag">#class</span></td><td>A.M. Homes</td><td>JC</td><td>Jun 18, 2025</td></tr>
+        <tr data-picker="JC" data-tags="#literary #class"><td><div class="story-title"><a href="https://loa-shared.s3.amazonaws.com/static/pdf/Cheever_Swimmer.pdf" target="_blank" rel="noopener">"The Swimmer"</a></div><div class="story-notes">NY vs LA. Homes is a contemporary LA riff on Cheever. Cheever's birthday week.</div><span class="tag">#literary</span><span class="tag">#class</span></td><td>John Cheever</td><td>JC</td><td>Jun 18, 2025</td></tr>
+        <tr data-picker="John" data-tags="#conformity #horror #too-long"><td><div class="story-title"><a href="https://fullreads.com/literature/the-lottery/" target="_blank" rel="noopener">"The Lottery"</a></div><div class="story-notes">John: "I was hoping to become more familiar with the stories before sharing."</div><span class="tag">#conformity</span><span class="tag">#horror</span><span class="tag">#too-long</span></td><td>Shirley Jackson</td><td>John</td><td>May 28, 2025</td></tr>
+        <tr data-picker="John" data-tags="#conformity #horror #too-long"><td><div class="story-title">"Procession of the Black Sloth"</div><div class="story-notes">John: "I was hoping to become more familiar with the stories before sharing."</div><span class="tag">#conformity</span><span class="tag">#horror</span><span class="tag">#too-long</span></td><td>Laird Barron</td><td>John</td><td>May 28, 2025</td></tr>
+        <tr data-picker="Ruben" data-tags="#surreal #childhood"><td><div class="story-title">"Cinnamon Shops"</div><div class="story-notes">Ruben's dad Bob joined. Both authors also visual artists. Stories about "perception and taking walks."</div><span class="tag">#surreal</span><span class="tag">#childhood</span></td><td>Bruno Schulz</td><td>Ruben</td><td>Apr 30, 2025</td></tr>
+        <tr data-picker="Ruben" data-tags="#surreal #childhood"><td><div class="story-title">"Speaking of Bashies"</div><div class="story-notes">Ruben's dad Bob joined. Both authors also visual artists. Stories about "perception and taking walks."</div><span class="tag">#surreal</span><span class="tag">#childhood</span></td><td>A. Kendra Greene</td><td>Ruben</td><td>Apr 30, 2025</td></tr>
+        <tr data-picker="Hannah" data-tags="#surreal #unreliable-narrator"><td><div class="story-title"><a href="https://www.gutenberg.org/ebooks/1952" target="_blank" rel="noopener">"The Yellow Wallpaper"</a></div><div class="story-notes">"Perception shifts—the idea of multiple truths." Gilman divorced by 1894, "an early adopter of divorce."</div><span class="tag">#surreal</span><span class="tag">#unreliable-narrator</span></td><td>Charlotte Perkins Gilman</td><td>Hannah</td><td>Mar 19, 2025</td></tr>
+        <tr data-picker="Hannah" data-tags="#surreal #unreliable-narrator"><td><div class="story-title"><a href="https://fullreads.com/literature/axolotl/" target="_blank" rel="noopener">"Axolotl"</a></div><div class="story-notes">"Perception shifts—the idea of multiple truths." Gilman divorced by 1894, "an early adopter of divorce."</div><span class="tag">#surreal</span><span class="tag">#unreliable-narrator</span></td><td>Julio Cortázar</td><td>Hannah</td><td>Mar 19, 2025</td></tr>
+        <tr data-picker="Hannah" data-tags="#surreal #unreliable-narrator"><td><div class="story-title">"Up in the Gallery"</div><div class="story-notes">"Perception shifts—the idea of multiple truths." Gilman divorced by 1894, "an early adopter of divorce."</div><span class="tag">#surreal</span><span class="tag">#unreliable-narrator</span></td><td>Franz Kafka (bonus)</td><td>Hannah</td><td>Mar 19, 2025</td></tr>
+        <tr data-picker="JC" data-tags="#literary #irish-lit"><td><div class="story-title">"The Particles of Order"</div><div class="story-notes">Li's characters live in literary worlds. Character says: "My life is a William Trevor story." Trevor is "the Irish Chekhov."</div><span class="tag">#literary</span><span class="tag">#irish-lit</span></td><td>Yiyun Li</td><td>JC</td><td>Feb 26, 2025</td></tr>
+        <tr data-picker="JC" data-tags="#literary #irish-lit"><td><div class="story-title">"The Piano Tuner's Wife"</div><div class="story-notes">Li's characters live in literary worlds. Character says: "My life is a William Trevor story." Trevor is "the Irish Chekhov."</div><span class="tag">#literary</span><span class="tag">#irish-lit</span></td><td>William Trevor</td><td>JC</td><td>Feb 26, 2025</td></tr>
+        <tr data-picker="John" data-tags="#fairy-tale #open-ended"><td><div class="story-title">"The Little Flashes"</div><div class="story-notes">John: "I lay prostrate before you, tardier than I'd ever anticipated."</div><span class="tag">#fairy-tale</span><span class="tag">#open-ended</span></td><td>Greg Shutz</td><td>John</td><td>Jan 22, 2025</td></tr>
+        <tr data-picker="John" data-tags="#fairy-tale #open-ended"><td><div class="story-title">"The Girl Who Did Not Know Fear"</div><div class="story-notes">John: "I lay prostrate before you, tardier than I'd ever anticipated."</div><span class="tag">#fairy-tale</span><span class="tag">#open-ended</span></td><td>Kelly Link</td><td>John</td><td>Jan 22, 2025</td></tr>
+        <tr data-picker="John" data-tags="#fairy-tale #open-ended"><td><div class="story-title">"Revision"</div><div class="story-notes">John: "I lay prostrate before you, tardier than I'd ever anticipated."</div><span class="tag">#fairy-tale</span><span class="tag">#open-ended</span></td><td>Daisy Hildyard (bonus)</td><td>John</td><td>Jan 22, 2025</td></tr>
+        <!-- 2024 -->
+        <tr data-picker="JC" data-tags="#all-play #time #death"><td><div class="story-title"><a href="https://electricliterature.com/the-great-silence-by-ted-chiang/" target="_blank" rel="noopener">"The Great Silence"</a></div><div class="story-notes">All Play. Theme: Time. Chiang's story was commissioned as visual art for Marciano museum. Chopin rec'd by Ruben's dad.</div><span class="tag">#all-play</span><span class="tag">#time</span><span class="tag">#death</span></td><td>Ted Chiang</td><td>JC</td><td>Dec 18, 2024</td></tr>
+        <tr data-picker="Hannah" data-tags="#all-play #time #death"><td><div class="story-title">"Wait a Minute"</div><div class="story-notes">All Play. Theme: Time.</div><span class="tag">#all-play</span><span class="tag">#time</span><span class="tag">#death</span></td><td>Lucia Berlin</td><td>Hannah</td><td>Dec 18, 2024</td></tr>
+        <tr data-picker="Ruben" data-tags="#all-play #time #death"><td><div class="story-title"><a href="https://www.katechopin.org/the-story-of-an-hour/" target="_blank" rel="noopener">"The Story of an Hour"</a></div><div class="story-notes">All Play. Theme: Time.</div><span class="tag">#all-play</span><span class="tag">#time</span><span class="tag">#death</span></td><td>Kate Chopin</td><td>Ruben</td><td>Dec 18, 2024</td></tr>
+        <tr data-picker="Ruben" data-tags="#anthology"><td><div class="story-title">"I Like All Colors"</div><div class="story-notes">Freeman's "Conclusions" anthology. "Writing is quite a personal thing that doesn't make much sense unless you are practicing for the last word."</div><span class="tag">#anthology</span></td><td>Semezdin Mehmedinovic</td><td>Ruben</td><td>Nov 18, 2024</td></tr>
+        <tr data-picker="Ruben" data-tags="#anthology"><td><div class="story-title">"Pillory"</div><div class="story-notes">Freeman's "Conclusions" anthology.</div><span class="tag">#anthology</span></td><td>Omar El Akkad</td><td>Ruben</td><td>Nov 18, 2024</td></tr>
+        <tr data-picker="Ruben" data-tags="#anthology"><td><div class="story-title">"The Creek, the Wind, the Holly"</div><div class="story-notes">Freeman's "Conclusions" anthology.</div><span class="tag">#anthology</span></td><td>Lacy Johnson</td><td>Ruben</td><td>Nov 18, 2024</td></tr>
+        <tr data-picker="Hannah" data-tags="#surreal #horror"><td><div class="story-title">"Little Rabbit"</div><div class="story-notes">"Surreal/spooky/horror/haunted." Bonus: "Time and Distance Overcome" – Eula Biss.</div><span class="tag">#surreal</span><span class="tag">#horror</span></td><td>Maria Reva</td><td>Hannah</td><td>Oct 23, 2024</td></tr>
+        <tr data-picker="Hannah" data-tags="#surreal #horror"><td><div class="story-title">"Slumberland"</div><div class="story-notes">"Surreal/spooky/horror/haunted."</div><span class="tag">#surreal</span><span class="tag">#horror</span></td><td>Laura van den Berg</td><td>Hannah</td><td>Oct 23, 2024</td></tr>
+        <tr data-picker="JC" data-tags="#jewish-lit #folk-tale"><td><div class="story-title">"Gimpel the Fool"</div><div class="story-notes">JC: "I'm not really sure if we will have a productive discussion; it could be a quiet 75 minutes."</div><span class="tag">#jewish-lit</span><span class="tag">#folk-tale</span></td><td>Isaac Bashevis Singer (trans. Saul Bellow)</td><td>JC</td><td>Sep 25, 2024</td></tr>
+        <tr data-picker="JC" data-tags="#jewish-lit #folk-tale"><td><div class="story-title">"Invented Jewish Tales"</div><span class="tag">#jewish-lit</span><span class="tag">#folk-tale</span></td><td>Sam Sax</td><td>JC</td><td>Sep 25, 2024</td></tr>
+        <tr data-picker="JC" data-tags="#all-play #short #coming-of-age"><td><div class="story-title">"Job History"</div><div class="story-notes">All Play. Theme: Succinct (&lt;10 pages). "We contain multitudes."</div><span class="tag">#all-play</span><span class="tag">#short</span><span class="tag">#coming-of-age</span></td><td>Annie Proulx</td><td>JC</td><td>Aug 28, 2024</td></tr>
+        <tr data-picker="John" data-tags="#all-play #short #coming-of-age"><td><div class="story-title">"The Crossing"</div><div class="story-notes">All Play. Theme: Succinct (&lt;10 pages).</div><span class="tag">#all-play</span><span class="tag">#short</span><span class="tag">#coming-of-age</span></td><td>Mark Slouka</td><td>John</td><td>Aug 28, 2024</td></tr>
+        <tr data-picker="Hannah" data-tags="#all-play #short #coming-of-age"><td><div class="story-title">"A Quarreling Couple"</div><div class="story-notes">All Play. Theme: Succinct (&lt;10 pages).</div><span class="tag">#all-play</span><span class="tag">#short</span><span class="tag">#coming-of-age</span></td><td>Jane Bowles</td><td>Hannah</td><td>Aug 28, 2024</td></tr>
+        <tr data-picker="Ruben" data-tags="#all-play #short #coming-of-age"><td><div class="story-title">"Forever Overhead"</div><div class="story-notes">All Play. Theme: Succinct (&lt;10 pages).</div><span class="tag">#all-play</span><span class="tag">#short</span><span class="tag">#coming-of-age</span></td><td>David Foster Wallace</td><td>Ruben</td><td>Aug 28, 2024</td></tr>
+        <tr data-picker="John" data-tags="#grief #class"><td><div class="story-title">"A Small Good Thing"</div><div class="story-notes">"Rabbit rabbit rabbit."</div><span class="tag">#grief</span><span class="tag">#class</span></td><td>Raymond Carver</td><td>John</td><td>Jul 24, 2024</td></tr>
+        <tr data-picker="John" data-tags="#grief #class"><td><div class="story-title"><a href="https://fullreads.com/literature/the-overcoat/" target="_blank" rel="noopener">"The Overcoat"</a></div><span class="tag">#grief</span><span class="tag">#class</span></td><td>Nikolai Gogol</td><td>John</td><td>Jul 24, 2024</td></tr>
+        <tr data-picker="Ruben" data-tags="#self-compassion #relationships"><td><div class="story-title">"The Company of Others"</div><div class="story-notes">Inspired by Peter Attia's "Outlive" on self-compassion. "Would you be this hard on your friend? No? Then go lighter on yourself."</div><span class="tag">#self-compassion</span><span class="tag">#relationships</span></td><td>Sara Freeman</td><td>Ruben</td><td>Jun 21, 2024</td></tr>
+        <tr data-picker="Ruben" data-tags="#self-compassion #relationships"><td><div class="story-title">"Annunciation"</div><span class="tag">#self-compassion</span><span class="tag">#relationships</span></td><td>Lauren Groff</td><td>Ruben</td><td>Jun 21, 2024</td></tr>
+        <tr data-picker="Hannah" data-tags="#surreal #relationships"><td><div class="story-title">"The Devourings"</div><div class="story-notes">Read Bender first. "Image system near the end is downright incredible."</div><span class="tag">#surreal</span><span class="tag">#relationships</span></td><td>Aimee Bender</td><td>Hannah</td><td>May 29, 2024</td></tr>
+        <tr data-picker="Hannah" data-tags="#surreal #relationships"><td><div class="story-title">"The Floating Bridge"</div><span class="tag">#surreal</span><span class="tag">#relationships</span></td><td>Alice Munro</td><td>Hannah</td><td>May 29, 2024</td></tr>
+        <tr data-picker="JC" data-tags="#literary #meta"><td><div class="story-title">"Kansas"</div><div class="story-notes">JC's 20-year history with Gilead. "I was afraid the book would reveal me as I am: sedate, thinky, begrudgingly sentimental."</div><span class="tag">#literary</span><span class="tag">#meta</span></td><td>Marilynne Robinson</td><td>JC</td><td>Apr 24, 2024</td></tr>
+        <tr data-picker="JC" data-tags="#literary #meta"><td><div class="story-title"><a href="https://xpressenglish.com/our-stories/conversation-with-father/" target="_blank" rel="noopener">"A Conversation with My Father"</a></div><span class="tag">#literary</span><span class="tag">#meta</span></td><td>Grace Paley</td><td>JC</td><td>Apr 24, 2024</td></tr>
+        <tr data-picker="John" data-tags="#irish-lit #devastating-ending"><td><div class="story-title">"Whoever is There, Come on Through"</div><div class="story-notes">John: "I'll leave it to each of you to surmise" the theme.</div><span class="tag">#irish-lit</span><span class="tag">#devastating-ending</span></td><td>Colin Barrett</td><td>John</td><td>Mar 27, 2024</td></tr>
+        <tr data-picker="John" data-tags="#irish-lit #devastating-ending"><td><div class="story-title"><a href="https://archive.org/details/bullet-in-the-brain-by-tobias-wolff-the-new-yorker" target="_blank" rel="noopener">"Bullet in the Brain"</a></div><span class="tag">#irish-lit</span><span class="tag">#devastating-ending</span></td><td>Tobias Wolff</td><td>John</td><td>Mar 27, 2024</td></tr>
+        <tr data-picker="Ruben" data-tags="#childhood #running"><td><div class="story-title">"Raymond's Run"</div><div class="story-notes">Running theme — Ruben recently got into distance running.</div><span class="tag">#childhood</span><span class="tag">#running</span></td><td>Toni Cade Bambara</td><td>Ruben</td><td>Feb 21, 2024</td></tr>
+        <tr data-picker="Ruben" data-tags="#childhood #running"><td><div class="story-title">"Crown Heights North"</div><span class="tag">#childhood</span><span class="tag">#running</span></td><td>Rivka Galchen</td><td>Ruben</td><td>Feb 21, 2024</td></tr>
+        <tr data-picker="Hannah" data-tags="#diaristic #dark-humor #class"><td><div class="story-title">"The Semplica Girl Diaries"</div><div class="story-notes">Both share "diaristic frame" and are "wildly dark and wildly funny and wildly strange."</div><span class="tag">#diaristic</span><span class="tag">#dark-humor</span><span class="tag">#class</span></td><td>George Saunders</td><td>Hannah</td><td>Jan 24, 2024</td></tr>
+        <tr data-picker="Hannah" data-tags="#diaristic #dark-humor #class"><td><div class="story-title">"Christina the Astonishing"</div><span class="tag">#diaristic</span><span class="tag">#dark-humor</span><span class="tag">#class</span></td><td>Kirstin Valdez Quade</td><td>Hannah</td><td>Jan 24, 2024</td></tr>
+        <!-- 2023 -->
+        <tr data-picker="Ruben" data-tags="#all-play #time"><td><div class="story-title"><a href="https://www.gutenberg.org/ebooks/60976" target="_blank" rel="noopener">"Rip Van Winkle"</a></div><div class="story-notes">All Play. Theme: Time. Irving is buried in Sleepy Hollow Cemetery.</div><span class="tag">#all-play</span><span class="tag">#time</span></td><td>Washington Irving</td><td>Ruben</td><td>Dec 13, 2023</td></tr>
+        <tr data-picker="Hannah" data-tags="#all-play #time"><td><div class="story-title">"Cortes the Killer"</div><div class="story-notes">All Play. Theme: Time.</div><span class="tag">#all-play</span><span class="tag">#time</span></td><td>Samantha Hunt</td><td>Hannah</td><td>Dec 13, 2023</td></tr>
+        <tr data-picker="JC" data-tags="#all-play #time"><td><div class="story-title">"The Perfume Thief"</div><div class="story-notes">All Play. Theme: Time.</div><span class="tag">#all-play</span><span class="tag">#time</span></td><td>Susan Finley</td><td>JC</td><td>Dec 13, 2023</td></tr>
+        <tr data-picker="JC" data-tags="#identity #open-ended"><td><div class="story-title">"If it keeps on raining"</div><div class="story-notes">"I am obsessed by the chauffeur who falls asleep in 'Heart'. My mom passed away in the Spring."</div><span class="tag">#identity</span><span class="tag">#open-ended</span></td><td>Jon McGregor</td><td>JC</td><td>Nov 15, 2023</td></tr>
+        <tr data-picker="JC" data-tags="#identity #open-ended"><td><div class="story-title">"Gogol"</div><span class="tag">#identity</span><span class="tag">#open-ended</span></td><td>Jhumpa Lahiri</td><td>JC</td><td>Nov 15, 2023</td></tr>
+        <tr data-picker="JC" data-tags="#identity #open-ended"><td><div class="story-title">"Heart"</div><span class="tag">#identity</span><span class="tag">#open-ended</span></td><td>Shuang Xuetao</td><td>JC</td><td>Nov 15, 2023</td></tr>
+        <tr data-picker="Hannah" data-tags="#all-play #horror"><td><div class="story-title">"The Husband Stitch"</div><div class="story-notes">All Play. Theme: Mystery/Horror.</div><span class="tag">#all-play</span><span class="tag">#horror</span></td><td>Carmen Maria Machado</td><td>Hannah</td><td>Oct 18, 2023</td></tr>
+        <tr data-picker="John" data-tags="#all-play #horror"><td><div class="story-title">"The Last Rung on the Ladder"</div><div class="story-notes">All Play. Theme: Mystery/Horror.</div><span class="tag">#all-play</span><span class="tag">#horror</span></td><td>Stephen King</td><td>John</td><td>Oct 18, 2023</td></tr>
+        <tr data-picker="JC" data-tags="#all-play #horror"><td><div class="story-title">"Red Wind"</div><div class="story-notes">All Play. Theme: Mystery/Horror.</div><span class="tag">#all-play</span><span class="tag">#horror</span></td><td>Raymond Chandler</td><td>JC</td><td>Oct 18, 2023</td></tr>
+        <tr data-picker="Ruben" data-tags="#all-play #horror"><td><div class="story-title">"October in the Chair"</div><div class="story-notes">All Play. Theme: Mystery/Horror.</div><span class="tag">#all-play</span><span class="tag">#horror</span></td><td>Neil Gaiman</td><td>Ruben</td><td>Oct 18, 2023</td></tr>
+        <tr data-picker="Ruben" data-tags="#literary #faith"><td><div class="story-title"><a href="https://americanliterature.com/author/anton-chekhov/short-story/the-student" target="_blank" rel="noopener">"The Student"</a></div><div class="story-notes">Bonus: "The School" – Donald Barthelme.</div><span class="tag">#literary</span><span class="tag">#faith</span></td><td>Anton Chekhov</td><td>Ruben</td><td>Sep 24, 2023</td></tr>
+        <tr data-picker="Ruben" data-tags="#literary #faith"><td><div class="story-title">"Rainbows"</div><span class="tag">#literary</span><span class="tag">#faith</span></td><td>Joseph O'Neill</td><td>Ruben</td><td>Sep 24, 2023</td></tr>
+        <tr data-picker="Hannah" data-tags="#sci-fi #surreal"><td><div class="story-title">"Does a Bee Care"</div><div class="story-notes">Bonus essay: Le Guin intro to Left Hand of Darkness.</div><span class="tag">#sci-fi</span><span class="tag">#surreal</span></td><td>Isaac Asimov</td><td>Hannah</td><td>Aug 12, 2023</td></tr>
+        <tr data-picker="Hannah" data-tags="#sci-fi #surreal"><td><div class="story-title">"Madame Bovary's Greyhound"</div><span class="tag">#sci-fi</span><span class="tag">#surreal</span></td><td>Karen Russell</td><td>Hannah</td><td>Aug 12, 2023</td></tr>
+        <tr data-picker="John" data-tags="#class #identity"><td><div class="story-title">"Between Zero and One"</div><span class="tag">#class</span><span class="tag">#identity</span></td><td>Bo Young Kim</td><td>John</td><td>Jul 27, 2023</td></tr>
+        <tr data-picker="John" data-tags="#class #identity"><td><div class="story-title"><a href="https://gutenberg.net.au/fsf/THE-RICH-BOY.html" target="_blank" rel="noopener">"Rich Boy"</a></div><span class="tag">#class</span><span class="tag">#identity</span></td><td>F. Scott Fitzgerald</td><td>John</td><td>Jul 27, 2023</td></tr>
+        <tr data-picker="JC" data-tags="#class #escape"><td><div class="story-title">"Bruto"</div><div class="story-notes">Hannah's first session.</div><span class="tag">#class</span><span class="tag">#escape</span></td><td>Helen DeWitt</td><td>JC</td><td>Jun 28, 2023</td></tr>
+        <tr data-picker="JC" data-tags="#class #escape"><td><div class="story-title">"The Fall of Edward Barnard"</div><div class="story-notes">Hannah's first session.</div><span class="tag">#class</span><span class="tag">#escape</span></td><td>Somerset Maugham</td><td>JC</td><td>Jun 28, 2023</td></tr>
+        <tr data-picker="Ruben" data-tags="#anthology"><td><div class="story-title">"The Moor"</div><div class="story-notes">From Murakami's Birthday Stories anthology.</div><span class="tag">#anthology</span></td><td>Russell Banks</td><td>Ruben</td><td>May 25, 2023</td></tr>
+        <tr data-picker="Ruben" data-tags="#anthology"><td><div class="story-title">"Angel of Mercy, Angel of Wraith"</div><div class="story-notes">From Murakami's Birthday Stories anthology.</div><span class="tag">#anthology</span></td><td>Ethan Canin</td><td>Ruben</td><td>May 25, 2023</td></tr>
+        <tr data-picker="John" data-tags="#surreal #southern-lit"><td><div class="story-title"><a href="https://www.sccs.swarthmore.edu/users/00/pwillen1/lit/cruins.htm" target="_blank" rel="noopener">"The Circular Ruins"</a></div><span class="tag">#surreal</span><span class="tag">#southern-lit</span></td><td>Jorge Luis Borges</td><td>John</td><td>Apr 20, 2023</td></tr>
+        <tr data-picker="John" data-tags="#surreal #southern-lit"><td><div class="story-title">"High-Water Railers"</div><span class="tag">#surreal</span><span class="tag">#southern-lit</span></td><td>Barry Hannah</td><td>John</td><td>Apr 20, 2023</td></tr>
+        <tr data-picker="Ruben" data-tags="#sci-fi #time"><td><div class="story-title">"Story of Your Life"</div><span class="tag">#sci-fi</span><span class="tag">#time</span></td><td>Ted Chiang</td><td>Ruben</td><td>Mar 16, 2023</td></tr>
+        <tr data-picker="Ruben" data-tags="#sci-fi #time"><td><div class="story-title"><a href="https://users.ece.cmu.edu/~gamvrosi/thelastq.html" target="_blank" rel="noopener">"The Last Question"</a></div><span class="tag">#sci-fi</span><span class="tag">#time</span></td><td>Isaac Asimov</td><td>Ruben</td><td>Mar 16, 2023</td></tr>
+        <tr data-picker="JC/Ruben" data-tags="#relationships #language"><td><div class="story-title"><a href="https://xpressenglish.com/our-stories/here-we-are/" target="_blank" rel="noopener">"Here We Are"</a></div><span class="tag">#relationships</span><span class="tag">#language</span></td><td>Dorothy Parker</td><td>JC/Ruben</td><td>Feb 17, 2023</td></tr>
+        <tr data-picker="JC/Ruben" data-tags="#relationships #language"><td><div class="story-title">"History of a Disturbance"</div><span class="tag">#relationships</span><span class="tag">#language</span></td><td>Steven Millhauser</td><td>JC/Ruben</td><td>Feb 17, 2023</td></tr>
+        <tr data-picker="Ruben" data-tags="#childhood #irish-lit #first-person"><td><div class="story-title">"Cathedral"</div><div class="story-notes">Founding session. Blue-collar first-person.</div><span class="tag">#childhood</span><span class="tag">#irish-lit</span><span class="tag">#first-person</span></td><td>Raymond Carver</td><td>Ruben</td><td>Jan 13, 2023</td></tr>
+        <tr data-picker="Ruben" data-tags="#childhood #irish-lit #first-person"><td><div class="story-title">"Foster"</div><div class="story-notes">Founding session. Blue-collar first-person.</div><span class="tag">#childhood</span><span class="tag">#irish-lit</span><span class="tag">#first-person</span></td><td>Claire Keegan</td><td>Ruben</td><td>Jan 13, 2023</td></tr>
+        <!-- 2022 -->
+        <tr data-picker="JC" data-tags="#parenting #dark-humor"><td><div class="story-title">"The Lame Shall Enter First"</div><div class="story-notes">Self-deluded parents become monsters.</div><span class="tag">#parenting</span><span class="tag">#dark-humor</span></td><td>Flannery O'Connor</td><td>JC</td><td>Dec 16, 2022</td></tr>
+        <tr data-picker="JC" data-tags="#parenting #dark-humor"><td><div class="story-title">"The Mom of Bold Action"</div><div class="story-notes">Self-deluded parents become monsters.</div><span class="tag">#parenting</span><span class="tag">#dark-humor</span></td><td>George Saunders</td><td>JC</td><td>Dec 16, 2022</td></tr>
+        <tr data-picker="JC" data-tags="#death #masculinity #class"><td><div class="story-title">"The Snows of Kilimanjaro"</div><div class="story-notes">Men fucking it up. George and Harry could be friends.</div><span class="tag">#death</span><span class="tag">#masculinity</span><span class="tag">#class</span></td><td>Ernest Hemingway</td><td>JC</td><td>Nov 17, 2022</td></tr>
+        <tr data-picker="JC" data-tags="#death #masculinity #class"><td><div class="story-title">"A King Alone"</div><div class="story-notes">Men fucking it up. George and Harry could be friends.</div><span class="tag">#death</span><span class="tag">#masculinity</span><span class="tag">#class</span></td><td>Rachel Kushner</td><td>JC</td><td>Nov 17, 2022</td></tr>
+      </tbody>
+    </table>
+
+    <div id="noResults" style="display:none; padding: 20px; color: var(--dim); text-align: center;">
+      No stories found.
+    </div>
   </div>
-  
+
+  <div class="section" id="allplays">
+    <div class="section-title">ALL PLAY SESSIONS</div>
+    <div class="allpick-box">
+      <div class="allpick-header">Dec 2025 &middot; Time</div>
+      <div class="allpick-picks">
+        <div><strong>JC:</strong> "Plants, Stones, Dirt, and Sky" &ndash; Yan Lianke</div>
+        <div><strong>Hannah:</strong> "Wing's Chips" &ndash; Mavis Gallant</div>
+        <div><strong>Ruben:</strong> "Repent, Harlequin!" &ndash; Harlan Ellison</div>
+        <div><strong>John:</strong> "My Dear You" &ndash; Rachel Khong</div>
+      </div>
+    </div>
+    <div class="allpick-box">
+      <div class="allpick-header">Aug 2025 &middot; Weather/Whether</div>
+      <div class="allpick-picks">
+        <div><strong>Hannah:</strong> "Sophistication" &ndash; Sherwood Anderson</div>
+        <div><strong>Ruben:</strong> "Point of View" &ndash; Lucia Berlin</div>
+        <div><strong>JC:</strong> "The Fête" &ndash; Tom Crewe</div>
+        <div><strong>John:</strong> "The Man Stopped" &ndash; Vladimir Nabokov</div>
+      </div>
+    </div>
+    <div class="allpick-box">
+      <div class="allpick-header">Dec 2024 &middot; Time</div>
+      <div class="allpick-picks">
+        <div><strong>JC:</strong> "The Great Silence" &ndash; Ted Chiang</div>
+        <div><strong>Hannah:</strong> "Wait a Minute" &ndash; Lucia Berlin</div>
+        <div><strong>Ruben:</strong> "The Story of an Hour" &ndash; Kate Chopin</div>
+        <div><strong>John:</strong> "The Letter" &ndash; (Dec 2024)</div>
+      </div>
+    </div>
+    <div class="allpick-box">
+      <div class="allpick-header">Aug 2024 &middot; Succinct</div>
+      <div class="allpick-picks">
+        <div><strong>JC:</strong> "Job History" &ndash; Annie Proulx</div>
+        <div><strong>John:</strong> "The Crossing" &ndash; Mark Slouka</div>
+        <div><strong>Hannah:</strong> "A Quarreling Couple" &ndash; Jane Bowles</div>
+        <div><strong>Ruben:</strong> "Forever Overhead" &ndash; David Foster Wallace</div>
+      </div>
+    </div>
+    <div class="allpick-box">
+      <div class="allpick-header">Dec 2023 &middot; Time</div>
+      <div class="allpick-picks">
+        <div><strong>Ruben:</strong> "Rip Van Winkle" &ndash; Washington Irving</div>
+        <div><strong>Hannah:</strong> "Cortes the Killer" &ndash; Samantha Hunt</div>
+        <div><strong>JC:</strong> "The Perfume Thief" &ndash; Susan Finley</div>
+      </div>
+    </div>
+    <div class="allpick-box">
+      <div class="allpick-header">Oct 2023 &middot; Mystery/Horror</div>
+      <div class="allpick-picks">
+        <div><strong>Hannah:</strong> "The Husband Stitch" &ndash; Carmen Maria Machado</div>
+        <div><strong>John:</strong> "The Last Rung on the Ladder" &ndash; Stephen King</div>
+        <div><strong>JC:</strong> "Red Wind" &ndash; Raymond Chandler</div>
+        <div><strong>Ruben:</strong> "October in the Chair" &ndash; Neil Gaiman</div>
+      </div>
+    </div>
+  </div>
+
   <div class="section" id="about">
     <div class="section-title">ABOUT</div>
-    <p>
-      Four friends meeting monthly since 2022 to discuss short stories.
-      One person picks two stories, everyone reads, we talk for 75 minutes on Google Meet.
-    </p>
-    <p class="dim" style="font-size:12px; margin-top:15px;">
-      "Two stories, two different authors, hopefully two different time periods. I feel like we're reading good stuff and have good conversations. That's all I wanted out of the group."
-    </p>
+    <p>Four friends meeting monthly since 2022 to discuss short stories. One person picks two stories, everyone reads, we talk for 75 minutes on Google Meet.</p>
+    <p class="dim" style="font-size:12px; margin-top:10px;">"Two stories, two different authors, hopefully two different time periods. I feel like we're reading good stuff and have good conversations. That's all I wanted out of the group." &mdash; JC, Jan 2023</p>
+    <p class="dim" style="font-size:12px; margin-top:10px;">What we like: older narrator reflecting on childhood &middot; ambiguous endings &middot; devastating final paragraphs &middot; stories that reward re-reading &middot; short enough to read twice &middot; increasing bewilderment</p>
   </div>
 
-  <div class="section">
-    <div class="section-title">THINGS WE LIKE</div>
-    <p class="dim" style="font-size:12px">
-      Older narrator coming to terms with childhood ·
-      Ambiguous endings ·
-      Devastating final paragraphs ·
-      Stories that reward re-reading ·
-      Short enough to read twice
-    </p>
-    <p class="dim" style="font-size:12px; margin-top:10px;">
-      "Another catnip is an open-ended story. The clean-cut ones we don't talk about as much."
-    </p>
-    <p class="dim" style="font-size:12px; margin-top:10px; font-style:italic;">
-      Alis grave nil — "Nothing is heavy to those who have wings."
-    </p>
-  </div>
-  
   <div class="footer">
-    <span class="dim">"rabbit rabbit rabbit"</span>
+    <span class="dim">"Lord, increase my bewilderment."</span><br>
+    <span class="dim" style="font-size:11px;">— Muslim prayer, via Fanny Howe, via Hannah</span>
     <div style="margin-top: 10px;">
-      <span class="dim">A <a href="https://jccangilla.com">JC Cangilla</a> project</span>
+      <span class="dim">A <a href="https://jccangilla.com">JC Cangilla</a> project &middot; type "rabbit" for a surprise</span>
     </div>
   </div>
 
-  <!-- Toast for easter egg discovery -->
   <div id="toast" class="toast"></div>
 
   <script>
-    // ========== Easter Egg: Type "rabbit" to reveal font switcher ==========
+    // Easter egg: type "rabbit"
     let typedKeys = '';
     const secretWord = 'rabbit';
-    
+
     document.addEventListener('keydown', function(e) {
-      // Close on Escape
-      if (e.key === 'Escape') {
-        hideFontSwitcher();
-        return;
-      }
-      
-      // Track typed characters
+      if (e.key === 'Escape') { hideFontSwitcher(); return; }
       typedKeys += e.key.toLowerCase();
-      
-      // Keep only last N characters (length of secret word)
-      if (typedKeys.length > secretWord.length) {
-        typedKeys = typedKeys.slice(-secretWord.length);
-      }
-      
-      // Check for match
-      if (typedKeys === secretWord) {
-        toggleFontSwitcher();
-        typedKeys = '';
-      }
+      if (typedKeys.length > secretWord.length) typedKeys = typedKeys.slice(-secretWord.length);
+      if (typedKeys === secretWord) { toggleFontSwitcher(); typedKeys = ''; }
     });
-    
-    // ========== Alternative: Click site title 3 times ==========
-    let clickCount = 0;
-    let clickTimer = null;
-    
+
+    // Triple-click site title
+    let clickCount = 0, clickTimer = null;
     document.getElementById('siteTitle').addEventListener('click', function() {
       clickCount++;
-      
       if (clickTimer) clearTimeout(clickTimer);
-      
-      if (clickCount === 3) {
-        toggleFontSwitcher();
-        clickCount = 0;
-      } else {
-        // Reset after 1 second of no clicks
-        clickTimer = setTimeout(() => {
-          clickCount = 0;
-        }, 1000);
-      }
+      if (clickCount === 3) { toggleFontSwitcher(); clickCount = 0; }
+      else { clickTimer = setTimeout(() => { clickCount = 0; }, 1000); }
     });
-    
-    // ========== Font Switcher Functions ==========
+
     function toggleFontSwitcher() {
-      const switcher = document.getElementById('fontSwitcher');
-      if (switcher.classList.contains('visible')) {
-        hideFontSwitcher();
-      } else {
-        showFontSwitcher();
-      }
+      const s = document.getElementById('fontSwitcher');
+      s.classList.contains('visible') ? hideFontSwitcher() : showFontSwitcher();
     }
-    
     function showFontSwitcher() {
       document.getElementById('fontSwitcher').classList.add('visible');
-      showToast('🐰 Font Lab activated!');
+      showToast('Font Lab activated!');
     }
-    
     function hideFontSwitcher() {
       document.getElementById('fontSwitcher').classList.remove('visible');
     }
-    
     function setFont(fontClass, btn) {
-      // Remove all font classes
-      document.body.className = document.body.className
-        .split(' ')
-        .filter(c => !c.startsWith('font-'))
-        .join(' ');
-      
-      // Add new font class
+      document.body.className = document.body.className.split(' ').filter(c => !c.startsWith('font-')).join(' ');
       document.body.classList.add(fontClass);
-      
-      // Update button states
       document.querySelectorAll('.font-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
-      // Save preference
       localStorage.setItem('ssdg-font', fontClass);
     }
-    
-    // ========== Dark Mode ==========
+
+    // Dark mode
     function toggleDark() {
       document.body.classList.toggle('dark');
       localStorage.setItem('ssdg-dark', document.body.classList.contains('dark'));
     }
-    
-    // ========== Toast Notification ==========
+
+    // Toast
     function showToast(message) {
       const toast = document.getElementById('toast');
       toast.textContent = message;
       toast.classList.add('visible');
-      
-      setTimeout(() => {
-        toast.classList.remove('visible');
-      }, 2000);
+      setTimeout(() => { toast.classList.remove('visible'); }, 2000);
     }
-    
-    // ========== Load Saved Preferences ==========
+
+    // Filter
+    let currentPicker = 'all';
+
+    function filterStories() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const rows = document.querySelectorAll('#storyTable tbody tr');
+      let visibleCount = 0;
+      rows.forEach(row => {
+        const picker = row.getAttribute('data-picker') || '';
+        const tags = row.getAttribute('data-tags') || '';
+        const text = row.textContent.toLowerCase() + ' ' + tags.toLowerCase();
+        const matchesSearch = searchTerm === '' || text.includes(searchTerm);
+        const matchesPicker = currentPicker === 'all' || picker === currentPicker;
+        if (matchesSearch && matchesPicker) { row.classList.remove('hidden'); visibleCount++; }
+        else { row.classList.add('hidden'); }
+      });
+      document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function filterByPicker(picker, btn) {
+      currentPicker = picker;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterStories();
+    }
+
+    // Tag click
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('tag')) {
+        document.getElementById('searchInput').value = e.target.textContent;
+        filterStories();
+      }
+    });
+
+    // Load saved preferences
     document.addEventListener('DOMContentLoaded', function() {
-      // Load saved font
       const savedFont = localStorage.getItem('ssdg-font');
       if (savedFont) {
         document.body.classList.add(savedFont);
-        // Update button state
         document.querySelectorAll('.font-btn').forEach(btn => {
           btn.classList.remove('active');
-          if (btn.onclick.toString().includes(savedFont)) {
-            btn.classList.add('active');
-          }
+          if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(savedFont)) btn.classList.add('active');
         });
       }
-      
-      // Load saved dark mode
-      const savedDark = localStorage.getItem('ssdg-dark');
-      if (savedDark === 'true') {
-        document.body.classList.add('dark');
-      }
+      if (localStorage.getItem('ssdg-dark') === 'true') document.body.classList.add('dark');
     });
   </script>
 </body>

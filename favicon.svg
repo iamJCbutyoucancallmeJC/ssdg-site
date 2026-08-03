@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="8" fill="#1a1a1a"/>
-  <text x="50" y="62" font-family="Courier, monospace" font-size="28" font-weight="bold" fill="#e0e0e0" text-anchor="middle">SSDG</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <style>
+    line, rect { stroke: #1a1a1a; }
+    @media (prefers-color-scheme: dark) { line, rect { stroke: #e6e2d8; } }
+  </style>
+  <rect x="2.5" y="0.5" width="11" height="15" fill="none" stroke-width="1"/>
+  <line x1="2.5" y1="4" x2="13.5" y2="4" stroke-width="1.5"/>
+  <line x1="4.5" y1="7" x2="11.5" y2="7" stroke-width="1"/>
+  <line x1="4.5" y1="10" x2="11.5" y2="10" stroke-width="1"/>
+  <line x1="4.5" y1="13" x2="8.5" y2="13" stroke-width="1"/>
 </svg>

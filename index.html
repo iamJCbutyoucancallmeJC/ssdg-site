@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SSDG – Short Story Discussion Group</title>
-  <meta name="description" content="Four friends reading two short stories each month since 2022. 106 stories, 44 meetings, still going.">
+  <meta name="description" content="Four friends reading two short stories each month since 2022. 113 stories, 45 meetings, still going.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="SSDG – Short Story Discussion Group">
@@ -239,7 +239,9 @@
       color: var(--bg);
     }
 
-    /* ===== Story Table ===== */
+    /* ===== Story Table =====
+       The archive is a dense wall of titles (the volume IS the point).
+       Notes and tags stay collapsed; a click on a row opens them. */
     .story-table {
       width: 100%;
       border-collapse: collapse;
@@ -257,22 +259,32 @@
     }
 
     .story-table td {
-      padding: 10px 10px 10px 0;
-      border-bottom: 1px dotted var(--border);
+      padding: 2px 10px 2px 0;
       vertical-align: top;
     }
 
+    .story-table tbody tr { cursor: pointer; }
     .story-table tr:hover td { background: var(--highlight); }
     .story-table tr.hidden { display: none; }
 
+    .story-title::before {
+      content: "+ ";
+      color: var(--dim);
+    }
+    .story-table tr.open .story-title::before { content: "\2212 "; }
+
     .story-notes {
+      display: none;
       font-size: 11px;
       color: var(--dim);
-      margin-top: 3px;
+      margin: 3px 0 4px 0;
+      max-width: 560px;
     }
+    .story-table tr.open .story-notes { display: block; }
+    .story-table tr.open td { padding-top: 6px; padding-bottom: 8px; border-bottom: 1px dotted var(--border); }
 
     .tag {
-      display: inline-block;
+      display: none;
       font-size: 9px;
       background: none;
       color: var(--dim);
@@ -281,6 +293,7 @@
       margin-top: 3px;
       cursor: pointer;
     }
+    .story-table tr.open .tag { display: inline-block; }
     .tag:hover { color: var(--text); text-decoration: underline; }
     .dark .tag { background: none; }
 
@@ -423,7 +436,7 @@
  |___________|_________________|_______|
  | JUL 31'26 |  John           |       |
  |___________|_________________|_______|
- |           |                 |       |
+ | AUG 19'26 |  All Play       |       |
  |___________|_________________|_______|
  |                                     |
  |  (Form 16)                   SSDG   |
@@ -444,7 +457,7 @@
        Update this block after each session.
        - Change the date, picker, and stories
        - Move class="nm-up" to whoever is picking next (All Play is a station too)
-       - Last session: Jul 31, 2026 (John). Next: August all-play (tentative Aug 21); JC picks September.
+       - Last session: Aug 19, 2026 (All Play: Lite or Light). Next: Sep 18 (JC), then Hannah Oct, Ruben Nov, December = everyone writes their own story.
        ================================================================ -->
   <style>
     .nm-rotation .nm-up { font-weight: bold; text-decoration: underline; }
@@ -453,11 +466,11 @@
   <div class="section">
     <div class="section-title">NEXT MEETING</div>
     <div class="next-meeting">
-      <div>Friday, August 21, 2026 (tentative) &middot; Google Meet</div>
+      <div>Friday, September 18, 2026 &middot; 9:00am &middot; Google Meet</div>
       <div class="nm-divider"></div>
-      <div>Picker: All Play &middot; summer theme: light reads</div>
-      <div>Stories: one per member</div>
-      <div class="nm-rotation">Rotation: <span>JC</span> &rarr; <span>Hannah</span> &rarr; <span>Ruben</span> &rarr; <span>John</span> &middot; <span class="nm-up">All Play</span></div>
+      <div>Picker: JC</div>
+      <div>Stories: TBD &middot; short ones, promised</div>
+      <div class="nm-rotation">Rotation: <span class="nm-up">JC</span> &rarr; <span>Hannah</span> &rarr; <span>Ruben</span> &rarr; <span>John</span> &middot; <span>All Play</span></div>
     </div>
   </div>
 
@@ -470,10 +483,10 @@
     <div class="section-title">ALL STORIES BY SESSION</div>
 
     <div class="stats-row">
-      <div class="stat-item"><span>106</span> stories</div>
+      <div class="stat-item"><span>113</span> stories</div>
       <div class="stat-item"><span>65+</span> authors</div>
-      <div class="stat-item"><span>44</span> sessions</div>
-      <div class="stat-item"><span>6</span> all plays</div>
+      <div class="stat-item"><span>45</span> sessions</div>
+      <div class="stat-item"><span>7</span> all plays</div>
     </div>
 
     <div class="search-box">
@@ -485,7 +498,10 @@
         <button class="filter-btn" onclick="filterByPicker('Hannah', this)">Hannah</button>
         <button class="filter-btn" onclick="filterByPicker('John', this)">John</button>
         <button class="filter-btn" onclick="filterByPicker('Ruben', this)">Ruben</button>
+        <span class="dim" style="margin-left:10px;">&middot;</span>
+        <button class="filter-btn" id="expandAllBtn" onclick="toggleAllNotes(this)">+ all notes</button>
       </div>
+      <div class="dim" style="font-size:11px; margin-top:8px;">Click a title for the note.</div>
     </div>
 
     <table class="story-table" id="storyTable">
@@ -499,6 +515,10 @@
       </thead>
       <tbody>
         <!-- 2026 -->
+        <tr data-picker="John" data-tags="#sci-fi #fairy-tale #open-ending #all-play"><td><div class="story-title">"Child Empress of Mars"</div><div class="story-notes">A Martian court poet narrates the arrival of an Earth hero who turns out to be an everyman; the villain and the trap are staged for him without his knowledge, and translation is visual: people can only see what they already understand. "Demanifesting" is the word for dying. All Play.</div><span class="tag">#sci-fi</span><span class="tag">#fairy-tale</span><span class="tag">#open-ending</span><span class="tag">#all-play</span></td><td>Theodora Goss</td><td>John</td><td>August 2026</td></tr>
+        <tr data-picker="JC" data-tags="#family #childhood #humor #first-person #devastating-ending #all-play"><td><div class="story-title">"When You Meet the Buddha in the Road"</div><div class="story-notes">A kid on a family road trip run entirely in therapy-speak: family hero, family mascot, feelings that come out of your allowance. It ends at the aquarium, where the good kid finally gets herself a cause and an effect. Deeply sad and very funny at once. All Play.</div><span class="tag">#family</span><span class="tag">#childhood</span><span class="tag">#humor</span><span class="tag">#first-person</span><span class="tag">#devastating-ending</span><span class="tag">#all-play</span></td><td>Mi Ditmar</td><td>JC</td><td>August 2026</td></tr>
+        <tr data-picker="Ruben" data-tags="#satire #fairy-tale #humor #all-play"><td><div class="story-title">"The Remarkable Rocket"</div><div class="story-notes">Wilde's most self-important firework is certain the prince's wedding is being held in his honor. Furious obliviousness, "pylotechnic" doubled down on, a doubled salary for a page who was never paid one; the 1880s stupid, still recognizable. All Play.</div><span class="tag">#satire</span><span class="tag">#fairy-tale</span><span class="tag">#humor</span><span class="tag">#all-play</span></td><td>Oscar Wilde</td><td>Ruben</td><td>August 2026</td></tr>
+        <tr data-picker="Hannah" data-tags="#realist #first-person #marriage #humor #all-play"><td><div class="story-title">"The Entire Northern Side Was Covered with Fire"</div><div class="story-notes">Everyone has apparently read the ex-husband's blog, "I Can't Stand My Wife"; the pregnant narrator would rather source a replacement parmesan grater. "It was my life that was lying in the middle of my life... like a poleaxed wildebeest." All Play.</div><span class="tag">#realist</span><span class="tag">#first-person</span><span class="tag">#marriage</span><span class="tag">#humor</span><span class="tag">#all-play</span></td><td>Rivka Galchen</td><td>Hannah</td><td>August 2026</td></tr>
         <tr data-picker="John" data-tags="#politics #identity #open-ending"><td><div class="story-title">"Palace Fortress"</div><div class="story-notes">An enforcer of a Stalin-like regime walks the machinery of punishment he built, and then walks home. Told with almost no interiority; whether the flatness is the point is the argument. "Dzh" is short for Dzhugashvili, Stalin's real name.</div><span class="tag">#politics</span><span class="tag">#identity</span><span class="tag">#open-ending</span></td><td>Ken Kalfus</td><td>John</td><td>July 2026</td></tr>
         <tr data-picker="John" data-tags="#frame-story #twist #politics #identity"><td><div class="story-title"><a href="https://biblioklept.org/2020/02/03/the-shape-of-the-sword-a-short-story-by-jorge-luis-borges/" target="_blank" rel="noopener">"The Shape of the Sword"</a></div><div class="story-notes">A man tells the story of his own betrayal from the honorable man's side, in reverse, so his listener will despise him properly. "Whatsoever one man does, it is as though all men did it."</div><span class="tag">#frame-story</span><span class="tag">#twist</span><span class="tag">#politics</span><span class="tag">#identity</span></td><td>Jorge Luis Borges</td><td>John</td><td>July 2026</td></tr>
         <tr data-picker="John" data-tags="#realist #love #identity #twist"><td><div class="story-title">"He Looked Nothing Like His Profile Picture"</div><div class="story-notes">A first date built on small lies that compound until the narrator dreams she is her own wife. App-era identity in three pages.</div><span class="tag">#realist</span><span class="tag">#love</span><span class="tag">#identity</span><span class="tag">#twist</span></td><td>Harris</td><td>John</td><td>July 2026</td></tr>
@@ -619,6 +639,15 @@
 
   <div class="section" id="allplays">
     <div class="section-title">ALL PLAY SESSIONS</div>
+    <div class="allpick-box">
+      <div class="allpick-header">Aug 2026 &middot; Lite or Light</div>
+      <div class="allpick-picks">
+        <div><strong>John:</strong> "Child Empress of Mars" &ndash; Theodora Goss</div>
+        <div><strong>JC:</strong> "When You Meet the Buddha in the Road" &ndash; Mi Ditmar</div>
+        <div><strong>Ruben:</strong> "The Remarkable Rocket" &ndash; Oscar Wilde</div>
+        <div><strong>Hannah:</strong> "The Entire Northern Side Was Covered with Fire" &ndash; Rivka Galchen</div>
+      </div>
+    </div>
     <div class="allpick-box">
       <div class="allpick-header">Dec 2025 &middot; Time</div>
       <div class="allpick-picks">
@@ -785,6 +814,23 @@
         filterStories();
       }
     });
+
+    // Row click: toggle the note open/closed (links and tags keep their own behavior)
+    document.querySelectorAll('#storyTable tbody tr').forEach(function(row) {
+      row.addEventListener('click', function(e) {
+        if (e.target.closest('a') || e.target.classList.contains('tag')) return;
+        this.classList.toggle('open');
+      });
+    });
+
+    let allNotesOpen = false;
+    function toggleAllNotes(btn) {
+      allNotesOpen = !allNotesOpen;
+      document.querySelectorAll('#storyTable tbody tr').forEach(function(r) {
+        r.classList.toggle('open', allNotesOpen);
+      });
+      btn.textContent = allNotesOpen ? '− all notes' : '+ all notes';
+    }
 
     // Load saved preferences
     document.addEventListener('DOMContentLoaded', function() {

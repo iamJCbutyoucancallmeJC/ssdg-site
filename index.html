@@ -185,22 +185,30 @@
     /* ===== Next Meeting ===== */
     .next-meeting {
       display: inline-block;
+      max-width: 100%;
       border: 1px solid var(--text);
       font-size: 13px;
       line-height: 1.6;
       padding: 10px 16px;
     }
+    /* the card is mono and shrink-to-fit, so anything that must not be split
+       mid-phrase when it wraps on a narrow screen gets nm-nb */
+    .next-meeting .nm-nb { white-space: nowrap; }
     .next-meeting .nm-divider {
       border-top: 1px solid var(--text);
       margin: 4px 0;
     }
+    .next-meeting .nm-stories,
     .next-meeting .nm-cont {
       padding-left: 9ch;   /* aligns under "Stories: " in the mono face */
     }
+    .next-meeting .nm-stories { text-indent: -9ch; }   /* hanging: the label sticks out left */
     .next-meeting .nm-rotation {
       margin-top: 8px;
-      white-space: nowrap;
+      padding-left: 10ch;
+      text-indent: -10ch;   /* hanging: a wrapped station lines up under the rotation */
     }
+    .next-meeting .nm-chain { white-space: nowrap; }
     .next-meeting .nm-pointer {
       display: flex;
       gap: 0;
@@ -349,7 +357,16 @@
     .toast.visible { opacity: 1; }
 
     /* ===== Responsive ===== */
+    /* SE-class widths: the hanging indents cost more room than they buy,
+       so the card goes flush left and the rotation keeps its own line */
+    @media (max-width: 360px) {
+      .next-meeting .nm-stories,
+      .next-meeting .nm-cont,
+      .next-meeting .nm-rotation { padding-left: 0; text-indent: 0; }
+    }
+
     @media (max-width: 600px) {
+      .next-meeting { font-size: 12px; padding: 10px 12px; }
       .story-table { font-size: 12px; }
       .story-table th:nth-child(3),
       .story-table td:nth-child(3),
@@ -470,12 +487,12 @@
   <div class="section">
     <div class="section-title">NEXT MEETING</div>
     <div class="next-meeting">
-      <div>Friday, September 18, 2026 &middot; 9:00am &middot; Google Meet</div>
+      <div>Friday, September 18, 2026 &middot; 9:00am <span class="nm-nb">&middot; Google Meet</span></div>
       <div class="nm-divider"></div>
       <div>Picker: JC</div>
-      <div>Stories: "Bettering Myself" &middot; Ottessa Moshfegh</div>
-      <div class="nm-cont">"Tattooizm" &middot; Kevin Moffett</div>
-      <div class="nm-rotation">Rotation: <span class="nm-up">JC</span> &rarr; <span>Hannah</span> &rarr; <span>Ruben</span> &rarr; <span>John</span> &middot; <span>All Play</span></div>
+      <div class="nm-stories">Stories: "Bettering Myself" <span class="nm-nb">&middot; Ottessa Moshfegh</span></div>
+      <div class="nm-cont">"Tattooizm" <span class="nm-nb">&middot; Kevin Moffett</span></div>
+      <div class="nm-rotation">Rotation: <span class="nm-chain"><span class="nm-up">JC</span> &rarr; <span>Hannah</span> &rarr; <span>Ruben</span> &rarr; <span>John</span></span> <span class="nm-nb">&middot; All Play</span></div>
     </div>
   </div>
 

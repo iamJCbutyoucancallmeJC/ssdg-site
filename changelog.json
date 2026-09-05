@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "site": {
+    "name": "SSDG",
+    "url": "https://ssdg.me",
+    "home": "/"
+  },
+  "entries": [
+    {
+      "date": "2026-08-29",
+      "title": "The next-meeting card fits a phone",
+      "summary": "The rotation row may wrap; only the four-name chain stays whole. Hanging indents keep wrapped lines under their titles. Measured at 320, 375, 768, and 1200."
+    },
+    {
+      "date": "2026-08-29",
+      "title": "September’s stories on the card",
+      "summary": "Two title lines, the second hanging so it aligns under the first in the mono face. The block stops saying TBD."
+    },
+    {
+      "date": "2026-08-19",
+      "title": "The archive becomes a wall of titles",
+      "summary": "Dense titles as the main material; notes and tags collapse behind a click per row, with a “+ all notes” toggle. The ledger on the card gets its newest row.",
+      "important": true
+    },
+    {
+      "date": "2026-08-03",
+      "title": "The library form is the logo",
+      "summary": "A date-due card, after a real one JC supplied. The full ASCII card sits in the header; the favicon is the card in five strokes.",
+      "important": true,
+      "note": "“SSDG” alone doesn’t carry the mark at small sizes; the full name on ruled lines does.",
+      "options": [
+        { "key": "L1", "title": "Salmon card stock", "blurb": "Tried on the linslow tile. Rejected: not the card." },
+        { "key": "L2", "title": "Cream card, thin blue rules, typewriter ink", "picked": "picked 8/2", "blurb": "The identity in every site’s footer." },
+        { "key": "F1", "title": "The full ASCII card in the header", "picked": "picked 8/3", "blurb": "Call number, AUTHOR Various, TITLE Two short stories, monthly. The ledger rows are real sessions." }
+      ]
+    },
+    {
+      "date": "2026-08-02",
+      "title": "Every story gets a reader-facing description",
+      "summary": "All sessions rewritten for a reader, not for the group. All Play joins the rotation as its own station."
+    },
+    {
+      "date": "2026-08-02",
+      "title": "The index table is generated from the archive",
+      "summary": "The sync script rewrites the story table from the vault record. Author cells no longer truncate at a comma; collections are italicized."
+    },
+    {
+      "date": "2026-08-01",
+      "title": "The card points at the next picker",
+      "summary": "August is an all-play; the arrow moves to JC for September."
+    },
+    {
+      "date": "2026-07-02",
+      "title": "Personal news leaves the public notes",
+      "summary": "Third-party news and a grief line come out of the public record."
+    },
+    {
+      "date": "2026-06-04",
+      "title": "Elsewhere joins the footer",
+      "summary": "Links to the other four properties, under the bewilderment prayer."
+    }
+  ]
+}

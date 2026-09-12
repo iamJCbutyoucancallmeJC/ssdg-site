@@ -375,6 +375,7 @@
       .story-table td:nth-child(4) { display: none; }
     }
   </style>
+  <link rel="stylesheet" href="/network-tiles/network-tiles.css">
 </head>
 <body>
 
@@ -741,12 +742,14 @@
     <div style="margin-top: 10px;">
       <span class="dim">type "rabbit" for a surprise</span>
     </div>
-    <div style="margin-top: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.04em;">
-      <span class="dim" style="text-transform: uppercase;">Elsewhere</span>&nbsp;&nbsp;
-      <a href="https://linslow.com">Linslow</a>&nbsp;&middot;&nbsp;
-      <a href="https://jccangilla.com">jccangilla.com</a>&nbsp;&middot;&nbsp;
-      <a href="https://tuesdaymensclub.com">Tuesday Men's Club</a>&nbsp;&middot;&nbsp;
-      <a href="https://thecaliforniawalk.com">The California Walk</a>
+    <div class="footer-network">
+      <span class="network-tiles-label dim">Elsewhere</span>
+      <div class="network-tiles">
+        <a class="tile network-tile tile-linslow" data-network-tile="linslow" href="https://linslow.com" aria-label="Linslow Industries"><span class="linslow-mark">// linslow industries</span></a>
+        <a class="tile network-tile tile-jcc" data-network-tile="jcc" href="https://jccangilla.com" aria-label="JC Cangilla"><span class="jcc-name">JC Cangilla</span><span class="jcc-sig">Building...</span></a>
+        <a class="tile network-tile tile-tmc" data-network-tile="tmc" href="https://tuesdaymensclub.com" aria-label="Tuesday Men&#x27;s Club"><span class="tmc-mark">Tuesday<br>Men&rsquo;s<br>Club</span></a>
+        <a class="tile network-tile tile-cawalk" data-network-tile="cawalk" href="https://thecaliforniawalk.com" aria-label="The California Walk"><img src="/network-tiles/california-walk-wordmark.png" alt="" width="680" height="70"></a>
+      </div>
     </div>
     <div style="margin-top: 8px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.04em;">
       <a href="/changelog/">changelog</a> <span class="dim">&middot; how this site got the way it is</span>

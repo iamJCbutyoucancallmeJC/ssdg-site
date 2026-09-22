@@ -7,6 +7,11 @@
   },
   "entries": [
     {
+      "date": "2026-09-22",
+      "title": "Tiles open before they leave",
+      "summary": "Each tile in the Elsewhere row shows its logo first. A click turns it over to a sentence on what the thing is and the way there; one more click goes to the site."
+    },
+    {
       "date": "2026-08-29",
       "title": "The next-meeting card fits a phone",
       "summary": "The rotation row may wrap; only the four-name chain stays whole. Hanging indents keep wrapped lines under their titles. Measured at 320, 375, 768, and 1200."

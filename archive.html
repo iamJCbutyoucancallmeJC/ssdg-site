@@ -264,7 +264,7 @@
 
   <div class="header">
     <div class="site-title"><a href="index.html" style="text-decoration:none">SSDG</a> / Archive</div>
-    <div class="tagline">114+ stories · 2022–present</div>
+    <div class="tagline">116+ stories · 2022–present</div>
   </div>
 
   <nav class="nav">
@@ -279,7 +279,7 @@
 
   <div class="section">
     <div class="stats-row">
-      <div class="stat-item"><span>114+</span> stories</div>
+      <div class="stat-item"><span>116+</span> stories</div>
       <div class="stat-item"><span>65+</span> authors</div>
       <div class="stat-item"><span>7</span> all plays</div>
     </div>
@@ -350,7 +350,9 @@
         <tr data-picker="Ruben" data-tags="#metafiction #art-and-writing #first-person"><td><div class="story-title">"Point of View"</div><div class="story-notes">Berlin narrates a lonely woman's Saturday while explaining why she's telling it in third person. The seams are the story. All Play.</div><span class="tag">#metafiction</span><span class="tag">#art-and-writing</span><span class="tag">#first-person</span></td><td>Lucia Berlin</td><td>Ruben</td><td>August 2025</td></tr>
         <tr data-picker="JC" data-tags="#realist #place #devastating-ending"><td><div class="story-title">"The Fête"</div><div class="story-notes">A village flower show embarks on "its short, eager life" and ends in catastrophe; built from a real 1891 invitation with the disaster copied on its back. All Play.</div><span class="tag">#realist</span><span class="tag">#place</span><span class="tag">#devastating-ending</span></td><td>Tom Crewe</td><td>JC</td><td>August 2025</td></tr>
         <tr data-picker="John" data-tags="#satire #art-and-writing #all-play"><td><div class="story-title">"The Man Stopped"</div><div class="story-notes">Possibly Nabokov's last unpublished story (1926, surfaced 2015): a man stops mid-journey, removes his boots, and walks barefoot toward the Polish border, in a parody of Soviet pseudo-folk style. All Play.</div><span class="tag">#satire</span><span class="tag">#art-and-writing</span><span class="tag">#all-play</span></td><td>Vladimir Nabokov</td><td>John</td><td>August 2025</td></tr>
-        <tr data-picker="Hannah" data-tags="#fairy-tale #aging #horror #skinning-incident"><td><div class="story-title">"The Old Woman Who Was Skinned"</div><div class="story-notes">The Neapolitan fairy tale that is exactly what it says, and the origin of this site's skinning statistic.</div><span class="tag">#fairy-tale</span><span class="tag">#aging</span><span class="tag">#horror</span><span class="tag">#skinning-incident</span></td><td></td><td>Hannah</td><td>July 2025</td></tr>
+        <tr data-picker="Hannah" data-tags="#fairy-tale #childhood"><td><div class="story-title">"The Little Dirty Girl"</div><div class="story-notes">Joanna Russ's contemporary adaptation from <em>The Armless Maiden: And Other Tales for Childhood's Survivors</em> (1995), the anthology behind Hannah's session on fairy tales as stories of surviving childhood; picked for how it reads like parts work, one self meeting another.</div><span class="tag">#fairy-tale</span><span class="tag">#childhood</span></td><td>Joanna Russ</td><td>Hannah</td><td>July 2025</td></tr>
+        <tr data-picker="Hannah" data-tags="#fairy-tale #childhood"><td><div class="story-title">"The Boy Who Needed Heroes"</div><div class="story-notes">Kristine Kathryn Rusch, from the same 1995 anthology; chosen for an internal reference that made it jump out after the June session.</div><span class="tag">#fairy-tale</span><span class="tag">#childhood</span></td><td>Kristine Kathryn Rusch</td><td>Hannah</td><td>July 2025</td></tr>
+        <tr data-picker="Hannah" data-tags="#fairy-tale #aging #horror #skinning-incident"><td><div class="story-title">"The Old Woman Who Was Skinned"</div><div class="story-notes">The Neapolitan fairy tale that is exactly what it says, and the origin of this site's skinning statistic.</div><span class="tag">#fairy-tale</span><span class="tag">#aging</span><span class="tag">#horror</span><span class="tag">#skinning-incident</span></td><td>Giambattista Basile</td><td>Hannah</td><td>July 2025</td></tr>
         <tr data-picker="JC" data-tags="#realist #place #class"><td><div class="story-title">"Walter, Like Water"</div><div class="story-notes">A contemporary Los Angeles riff on Cheever.</div><span class="tag">#realist</span><span class="tag">#place</span><span class="tag">#class</span></td><td>A.M. Homes</td><td>JC</td><td>June 2025</td></tr>
         <tr data-picker="JC" data-tags="#surreal #class #devastating-ending"><td><div class="story-title"><a href="https://loa-shared.s3.amazonaws.com/static/pdf/Cheever_Swimmer.pdf" target="_blank" rel="noopener">"The Swimmer"</a></div><div class="story-notes">Neddy Merrill swims home pool by pool across the county while the seasons, and his life, slide out from under him.</div><span class="tag">#surreal</span><span class="tag">#class</span><span class="tag">#devastating-ending</span></td><td>John Cheever</td><td>JC</td><td>June 2025</td></tr>
         <tr data-picker="John" data-tags="#horror #politics #twist"><td><div class="story-title"><a href="https://fullreads.com/literature/the-lottery/" target="_blank" rel="noopener">"The Lottery"</a></div><div class="story-notes">The village ritual that made 1948 New Yorker readers cancel their subscriptions.</div><span class="tag">#horror</span><span class="tag">#politics</span><span class="tag">#twist</span></td><td>Shirley Jackson</td><td>John</td><td>May 2025</td></tr>
@@ -591,7 +593,7 @@
         const matchesSearch = searchTerm === '' || text.includes(searchTerm);
         // A joint pick is stored as 'JC/Ruben' -- it belongs under both their
         // filters, so match on membership rather than on the whole string.
-        const matchesPicker = currentPicker === 'all' || picker.split('/').includes(currentPicker);
+        const matchesPicker = currentPicker === 'all' || picker.split('/').map(p => p.trim()).includes(currentPicker);
 
         if (matchesSearch && matchesPicker) {
           row.classList.remove('hidden');

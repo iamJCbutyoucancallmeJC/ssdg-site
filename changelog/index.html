@@ -70,6 +70,10 @@
 
 .log .log-list { list-style: none; margin: 0; padding: 0; }
 
+/* Arriving on an anchor (9/30): room above the entry, and its title in the pop color. */
+.log .log-entry { scroll-margin-top: 24px; }
+.log .log-entry:target .log-title { color: var(--lg-pop); }
+
 .log .log-entry {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -214,31 +218,37 @@ body { margin: 0; background: #fafafa; color: #1a1a1a; font-family: 'Courier Pri
 <div class="log-masthead"><span class="site"><a href="/">SSDG</a></span><span class="date">changelog</span></div>
 <p class="log-intro">How this site got the way it is, newest first. The entry says what changed; beside a few, a note says why, in the maker’s hand. “Considered options” opens what else was on the table.</p>
 <ol class="log-list">
-<li class="log-entry"><div class="log-main">
+<li class="log-entry" id="2026-10-07-stories-stack-on-a-phone"><div class="log-main">
+<div class="log-date">2026-10-07</div>
+<h2 class="log-title">Stories stack on a phone</h2>
+<p class="log-summary">Each story is a title line and an author line under 480px; prose at 14px; SSDG is the heading; a share card for the link.</p>
+</div>
+</li>
+<li class="log-entry" id="2026-09-22-tiles-open-before-they-leave"><div class="log-main">
 <div class="log-date">2026-09-22</div>
 <h2 class="log-title">Tiles open before they leave</h2>
 <p class="log-summary">Each tile in the Elsewhere row shows its logo first. A click turns it over to a sentence on what the thing is and the way there; one more click goes to the site.</p>
 </div>
 </li>
-<li class="log-entry"><div class="log-main">
+<li class="log-entry" id="2026-08-29-the-next-meeting-card-fits-a-phone"><div class="log-main">
 <div class="log-date">2026-08-29</div>
 <h2 class="log-title">The next-meeting card fits a phone</h2>
 <p class="log-summary">The rotation row may wrap; only the four-name chain stays whole. Hanging indents keep wrapped lines under their titles. Measured at 320, 375, 768, and 1200.</p>
 </div>
 </li>
-<li class="log-entry"><div class="log-main">
+<li class="log-entry" id="2026-08-29-september-s-stories-on-the-card"><div class="log-main">
 <div class="log-date">2026-08-29</div>
 <h2 class="log-title">September’s stories on the card</h2>
 <p class="log-summary">Two title lines, the second hanging so it aligns under the first in the mono face. The block stops saying TBD.</p>
 </div>
 </li>
-<li class="log-entry important"><div class="log-main">
+<li class="log-entry important" id="2026-08-19-the-archive-becomes-a-wall-of-titles"><div class="log-main">
 <div class="log-date">2026-08-19</div>
 <h2 class="log-title">The archive becomes a wall of titles</h2>
 <p class="log-summary">Dense titles as the main material; notes and tags collapse behind a click per row, with a “+ all notes” toggle. The ledger on the card gets its newest row.</p>
 </div>
 </li>
-<li class="log-entry important"><div class="log-main">
+<li class="log-entry important" id="2026-08-03-the-library-form-is-the-logo"><div class="log-main">
 <div class="log-date">2026-08-03</div>
 <h2 class="log-title">The library form is the logo</h2>
 <p class="log-summary">A date-due card, after a real one JC supplied. The full ASCII card sits in the header; the favicon is the card in five strokes.</p>
@@ -251,31 +261,31 @@ body { margin: 0; background: #fafafa; color: #1a1a1a; font-family: 'Courier Pri
 </div>
 <aside class="log-note">“SSDG” alone doesn’t carry the mark at small sizes; the full name on ruled lines does.<div class="who">JC, 8/3</div></aside>
 </li>
-<li class="log-entry"><div class="log-main">
+<li class="log-entry" id="2026-08-02-every-story-gets-a-reader-facing-description"><div class="log-main">
 <div class="log-date">2026-08-02</div>
 <h2 class="log-title">Every story gets a reader-facing description</h2>
 <p class="log-summary">All sessions rewritten for a reader, not for the group. All Play joins the rotation as its own station.</p>
 </div>
 </li>
-<li class="log-entry"><div class="log-main">
+<li class="log-entry" id="2026-08-02-the-index-table-is-generated-from-the-archive"><div class="log-main">
 <div class="log-date">2026-08-02</div>
 <h2 class="log-title">The index table is generated from the archive</h2>
 <p class="log-summary">The sync script rewrites the story table from the vault record. Author cells no longer truncate at a comma; collections are italicized.</p>
 </div>
 </li>
-<li class="log-entry"><div class="log-main">
+<li class="log-entry" id="2026-08-01-the-card-points-at-the-next-picker"><div class="log-main">
 <div class="log-date">2026-08-01</div>
 <h2 class="log-title">The card points at the next picker</h2>
 <p class="log-summary">August is an all-play; the arrow moves to JC for September.</p>
 </div>
 </li>
-<li class="log-entry"><div class="log-main">
+<li class="log-entry" id="2026-07-02-personal-news-leaves-the-public-notes"><div class="log-main">
 <div class="log-date">2026-07-02</div>
 <h2 class="log-title">Personal news leaves the public notes</h2>
 <p class="log-summary">Third-party news and a grief line come out of the public record.</p>
 </div>
 </li>
-<li class="log-entry"><div class="log-main">
+<li class="log-entry" id="2026-06-04-elsewhere-joins-the-footer"><div class="log-main">
 <div class="log-date">2026-06-04</div>
 <h2 class="log-title">Elsewhere joins the footer</h2>
 <p class="log-summary">Links to the other four properties, under the bewilderment prayer.</p>

@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archive – SSDG</title>
+  <meta name="description" content="Every story SSDG has read, by session, 2022 to present.">
+  <link rel="canonical" href="https://ssdg.me/archive.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Archive – SSDG">
+  <meta property="og:description" content="Every story SSDG has read, by session, 2022 to present.">
+  <meta property="og:url" content="https://ssdg.me/archive.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ssdg.me/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-K4SGNJ3NVM"></script>
@@ -258,12 +272,29 @@
         display: none;
       }
     }
+
+    /* Phones: with Picker and Session already gone, Story and Author still split
+       ~350px and every title wraps three deep. The author stacks under its title
+       in one block instead. Desktop keeps the four dense columns. */
+    @media (max-width: 480px) {
+      .story-table thead th:nth-child(2) { display: none; }
+      .story-table tbody tr,
+      .story-table tbody td { display: block; }
+      .story-table tbody td { padding-right: 0; }
+      .story-table tbody td:nth-child(2) {
+        padding: 0 0 6px 2ch;   /* sits under the title text, past the "+ " */
+        color: var(--dim);
+        font-size: 11px;
+      }
+      .story-table tbody tr.open td:first-child { padding-bottom: 0; border-bottom: none; }
+      .story-table tbody tr.open td:nth-child(2) { padding-top: 0; }
+    }
   </style>
 </head>
 <body>
 
   <div class="header">
-    <div class="site-title"><a href="index.html" style="text-decoration:none">SSDG</a> / Archive</div>
+    <h1 class="site-title"><a href="index.html" style="text-decoration:none">SSDG</a> / Archive</h1>
     <div class="tagline">116+ stories · 2022–present</div>
   </div>
 

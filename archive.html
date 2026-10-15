@@ -36,6 +36,7 @@
       --link: #1a1a1a;
       --border: #ccc;
       --highlight: #fff3cd;
+      --pen: #2f6fb0;
     }
 
     .dark {
@@ -45,7 +46,11 @@
       --link: #e0e0e0;
       --border: #444;
       --highlight: #3d3d00;
+      --pen: #8db8e8;
     }
+
+    /* Keyboard focus: 2px solid pen, 2px offset; the night blue on the dark theme (t1802). */
+    :focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; }
 
     * { box-sizing: border-box; }
 

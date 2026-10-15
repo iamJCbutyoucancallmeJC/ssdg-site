@@ -41,6 +41,7 @@
       --link: #1a1a1a;
       --border: #ccc;
       --highlight: #fff3cd;
+      --pen: #2f6fb0;
     }
 
     .dark {
@@ -50,7 +51,11 @@
       --link: #e0e0e0;
       --border: #444;
       --highlight: #3d3d00;
+      --pen: #8db8e8;
     }
+
+    /* Keyboard focus: 2px solid pen, 2px offset; the night blue on the dark theme (t1802). */
+    :focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; }
 
     * { box-sizing: border-box; }
 
@@ -177,10 +182,10 @@
 
     .section { margin: 30px 0; }
 
-    /* Prose (intro line, About) reads at body size and stops near 70 characters;
+    /* Prose (intro line, About) reads at body size and stops near 65 characters;
        the 900px column is for the table, not for sentences */
     .tagline,
-    #about p { max-width: 70ch; }
+    #about p { max-width: 65ch; }
 
     .section-title {
       font-weight: bold;

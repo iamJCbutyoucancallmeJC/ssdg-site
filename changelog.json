@@ -7,6 +7,11 @@
   },
   "entries": [
     {
+      "date": "2026-10-15",
+      "title": "A focus ring, a shorter line",
+      "summary": "Keyboard focus draws a 2px pen ring, the night blue on the dark theme. Prose stops at 65 characters; the table keeps its density."
+    },
+    {
       "date": "2026-10-07",
       "title": "Stories stack on a phone",
       "summary": "Each story is a title line and an author line under 480px; prose at 14px; SSDG is the heading; a share card for the link."

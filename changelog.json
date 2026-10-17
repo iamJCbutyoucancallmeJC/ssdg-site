@@ -3,9 +3,15 @@
   "site": {
     "name": "SSDG",
     "url": "https://ssdg.me",
-    "home": "/"
+    "home": "/",
+    "ogImage": "/og-image.png"
   },
   "entries": [
+    {
+      "date": "2026-10-17",
+      "title": "The date-due slip travels",
+      "summary": "A shared link shows the library date-due slip in Courier Prime on card stock, with ssdg.me on the bottom line."
+    },
     {
       "date": "2026-10-15",
       "title": "A focus ring, a shorter line",
